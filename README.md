@@ -1,2 +1,2 @@
 # XlsxCommand
-PowerShell 7 Cmdlets named Export-WorksheetXlsx and Import-WorksheetXlsx to write and read data from Excel XLSX format files.
+PowerShell 7 Cmdlet Export-WorksheetXlsx to create Excel XLSX format files and Cmdlet Import-WorksheetXlsx to read from Excel XLSX format files.
