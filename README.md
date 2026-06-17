@@ -22,8 +22,15 @@ Export-WorksheetXlsx [-DestinationExcelXLSXFilePath] <string>
 ```
 
 ## Export-WorksheetXlsx usage examples
-This example writes the values of the ID, Name, CPU properties of the first 3 current processes into a new Excel Worksheet XLSX file at the given path:
+### Create an Excel XLSX Worksheet with default cell formats.
+This example writes the values of the ID, Name, and CPU properties of the first 3 current processes into a new Excel Worksheet XLSX file at the given path:
 ```
 Import-Module XlsxCommand
 Get-Process | Select-Object -First 3 | Select-Object Id,Name,CPU | Export-WorksheetXlsx $home\Documents\FirstThreeProcesses.xlsx
+```
+### Create an Excel XLSX Worksheet with given cell formatting.
+This example writes the same values as the previous example and specifies the cell data type and cell horizontal alignment for those values:
+```
+Import-Module XlsxCommand
+Get-Process | Select-Object -First 3 | Select-Object Id,Name,CPU | Export-WorksheetXlsx $home\Documents\FirstThreeProcesses.xlsx -DataType Number,String,Number -Align Center,Left,Right
 ```
