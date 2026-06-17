@@ -15,7 +15,8 @@ Export-WorksheetXlsx [-DestinationExcelXLSXFilePath] <string>
     [-InputHashtable <OrderedHashtable>]
     [-Group <Object[]>]
     [-DataType {String | Number | Date | Time}]
-    [-DataTypeMap <OrderedHashtable>] [-Align {Left | Center | Right}]
+    [-Align {Left | Center | Right}]
+    [-DataTypeMap <OrderedHashtable>]
     [-AlignMap <OrderedHashtable>]
     [<CommonParameters>]
 ```
