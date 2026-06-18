@@ -4,6 +4,16 @@
 PowerShell 7 Module with the following CmdLets: (1) CmdLet ```Export-WorksheetXlsx``` to create Excel XLSX format files, and (2) CmdLet ```Import-WorksheetXlsx``` to read from Excel XLSX format files.
 
 ## Installation
+### Installation prerequisites
+
+### Installation process
+The installation process includes a location for the ```XlsxCommand``` module. Such location is determined by the ```Scope``` parameter of the ```Install-Module``` CmdLet. The accessibility of the installed module is determined by the value of that ```Scope``` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
+The ```XlsxCommand``` module has been tested (installation and included CmdLets) on the following runtime environment:
+1. PowerShell 7.6.0
+2. PowerShellGet 2.2.5
+As the default value for the ```Scope``` parameter varies, review the documentation about it:
+[Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
+
 ```
 Install-Module -Name XlsxCommand
 ```
@@ -82,7 +92,7 @@ $processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStat
 ```
 
 ### 6. Create an Excel XLSX Worksheet with multiple tabs using PowerShell classes.
-This example writes the same values and tabs as the example #5, and also specifies the cell data type and cell horizontal alignment for the data cells by CLR attributes in the corresponding properties in PowerShell classes:
+This example writes the same values and tabs as the example #5, and also specifies the cell data type and cell horizontal alignment for the data cells by CLR attributes in the corresponding properties of PowerShell classes:
 ```
 Import-Module XlsxCommand
 
