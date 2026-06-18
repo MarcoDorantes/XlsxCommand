@@ -132,7 +132,7 @@ class ServiceView
 
 $serviceByStatus = Get-Service | %{ [ServiceView]::new($_) } | group Status;
 $processes = Get-Process | Select-Object -First 3 | %{ [ProcessView]::new($_) }
-$processes | Export-WorksheetXlsx $home\Downloads\Processes.xlsx -Group $serviceByStatus
+$processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStatus
 ```
 
 ## Import-WorksheetXlsx usage examples
