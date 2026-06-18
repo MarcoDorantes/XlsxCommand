@@ -81,5 +81,59 @@ $alignmap = @{Id='Center'; Name='Left'; CPU='Right'; Service='Left'; Type='Cente
 $processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStatus -DataTypeMap $typemap -AlignMap $alignmap
 ```
 
+### 6. Create an Excel XLSX Worksheet with multiple tabs using PowerShell classes.
+This example writes the same values and tabs as the example #5, and also specifies the cell data type and cell horizontal alignment for the data cells by CLR attributes in the corresponding properties in PowerShell classes:
+```
+Import-Module XlsxCommand
+
+class ProcessView
+{
+    [System.ComponentModel.DataAnnotations.DataType('Number')]
+    [System.ComponentModel.DataAnnotations.DisplayFormat(DataFormatString = 'Center')]
+    $Id
+
+    [System.ComponentModel.DataAnnotations.DataType('String')]
+    [System.ComponentModel.DataAnnotations.DisplayFormat(DataFormatString = 'Left')]
+    $Name
+
+    [System.ComponentModel.DataAnnotations.DataType('Number')]
+    [System.ComponentModel.DataAnnotations.DisplayFormat(DataFormatString = 'Right')]
+    $CPU
+
+    ProcessView($process)
+    {
+        $this.Id = $process.Id
+        $this.Name = $process.Name
+        $this.CPU = $process.CPU
+    }
+}
+
+class ServiceView
+{
+    [System.ComponentModel.DataAnnotations.DataType('String')]
+    [System.ComponentModel.DataAnnotations.DisplayFormat(DataFormatString = 'Left')]
+    $Service
+
+    [System.ComponentModel.DataAnnotations.DataType('String')]
+    [System.ComponentModel.DataAnnotations.DisplayFormat(DataFormatString = 'Center')]
+    $Type
+
+    [System.ComponentModel.DataAnnotations.DataType('String')]
+    [System.ComponentModel.DataAnnotations.DisplayFormat(DataFormatString = 'Center')]
+    $Status
+
+    ServiceView($service)
+    {
+        $this.Service = $service.DisplayName
+        $this.Type = $service.ServiceType
+        $this.Status = $service.Status
+    }
+}
+
+$serviceByStatus = Get-Service | %{ [ServiceView]::new($_) } | group Status;
+$processes = Get-Process | Select-Object -First 3 | %{ [ProcessView]::new($_) }
+$processes | Export-WorksheetXlsx $home\Downloads\Processes.xlsx -Group $serviceByStatus
+```
+
 ## Import-WorksheetXlsx usage examples
 (*Pending...*)
