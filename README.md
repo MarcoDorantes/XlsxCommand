@@ -149,9 +149,7 @@ This example reads the tab names found in the Excel XLSX Worksheet which is the 
 ```
 Import-WorksheetXlsx C:\config\Processes.xlsx -TabNames
 
-| Id | Name | CPU |
-| -- | ---- | --- |
-| 5496 | AggregatorHost | |
-| 9504 | audiodg | 0.046875 |
-| 8360 | cmd | 0.046875 |
+Processes
+Stopped
+Running
 ```
