@@ -62,7 +62,7 @@ Import-Module XlsxCommand
 Get-Process | Select-Object -First 3 | Select-Object Id,Name,CPU | Export-WorksheetXlsx $home\Documents\FirstThreeProcesses.xlsx -DataTypeMap @{Id='Number'; Name='String'; CPU='Number'} -AlignMap @{Id='Center'; Name='Left'; CPU='Right'}
 ```
 
-### 4. Create an Excel XLSX Worksheet with different tabs by group.
+### 4. Create an Excel XLSX Worksheet with multiple tabs by group.
 This example writes the values of the DisplayName, ServiceType, and Status properties of the current services, grouped by Status, separated in different tabs by group, into a new Excel Worksheet XLSX file at the given path:
 ```
 Import-Module XlsxCommand
@@ -70,7 +70,7 @@ $tabs = Get-Service | %{ [PSCustomObject]@{Service=$_.DisplayName; Type=$_.Servi
 Export-WorksheetXlsx $home\Documents\ServicesByStatus.xlsx -Group $tabs
 ```
 
-### 5. Create an Excel XLSX Worksheet with different tabs.
+### 5. Create an Excel XLSX Worksheet with multiple tabs.
 This example writes the same values and tabs as the example #3, the example #4, and also specifies the cell data type and cell horizontal alignment for the corresponding data cells by property name:
 ```
 Import-Module XlsxCommand
@@ -78,7 +78,7 @@ $serviceByStatus = Get-Service | %{ [PSCustomObject]@{Service=$_.DisplayName; Ty
 $processes = Get-Process | Select-Object -First 3 | Select-Object Id,Name,CPU
 $typemap = @{Id='Number'; Name='String'; CPU='Number'; Service='String'; Type='String'; Status='String'}
 $alignmap = @{Id='Center'; Name='Left'; CPU='Right'; Service='Left'; Type='Center'; Status='Center'}
-$processes | Export-WorksheetXlsx C:\config\ServicesByStatusAndProcesses.xlsx -Group $serviceByStatus -DataTypeMap $typemap -AlignMap $alignmap
+$processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStatus -DataTypeMap $typemap -AlignMap $alignmap
 ```
 
 ## Import-WorksheetXlsx usage examples
