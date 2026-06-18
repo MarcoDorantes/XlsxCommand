@@ -11,7 +11,7 @@ The ```XlsxCommand``` module has been tested (installation and included CmdLets)
 
 ### Installation process
 The installation process includes a location for the ```XlsxCommand``` module. Such location is determined by the ```Scope``` parameter of the ```Install-Module``` CmdLet. The accessibility of the installed module is determined by the value of that ```Scope``` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
-As the default value for the ```Scope``` parameter varies, review the documentation about it: [Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
+As the default value for the ```Scope``` parameter varies, checking  the related documentation is in order: [Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
 ```
 Install-Module -Name XlsxCommand
 ```
@@ -144,4 +144,14 @@ $processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStat
 ```
 
 ## Import-WorksheetXlsx usage examples
-(*Pending...*)
+### 7. Read existing tab names from an Excel XLSX Worksheet.
+This example reads the tab names found in the Excel XLSX Worksheet which is the output in example #5 or in example #6:
+```
+Import-WorksheetXlsx C:\config\Processes.xlsx -TabNames
+
+| Id | Name | CPU |
+| -- | ---- | --- |
+| 5496 | AggregatorHost | |
+| 9504 | audiodg | 0.046875 |
+| 8360 | cmd | 0.046875 |
+```
