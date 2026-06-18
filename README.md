@@ -8,7 +8,8 @@ PowerShell 7 Module with the following CmdLets: (1) CmdLet ```Export-WorksheetXl
 Install-Module -Name XlsxCommand
 ```
 
-## Export-WorksheetXlsx syntax
+## CmdLet syntax
+### Export-WorksheetXlsx syntax
 ```
 Export-WorksheetXlsx [-DestinationExcelXLSXFilePath] <string>
     [-InputObject <psobject>]
@@ -18,6 +19,24 @@ Export-WorksheetXlsx [-DestinationExcelXLSXFilePath] <string>
     [-Align {Left | Center | Right}]
     [-DataTypeMap <OrderedHashtable>]
     [-AlignMap <OrderedHashtable>]
+    [<CommonParameters>]
+```
+
+### Import-WorksheetXlsx syntax
+```
+Import-WorksheetXlsx [-ExcelXLSXFilePath] <string>
+    -TabNames
+    [<CommonParameters>]
+    
+
+Import-WorksheetXlsx [-ExcelXLSXFilePath] <string>
+    [-TabName <string>]
+    [-AsRawCellData]
+    [-Header <string[]>]
+    [-First <int>]
+    [-Last <int>]
+    [-Skip <int>]
+    [-Schema <PSTypeName>]
     [<CommonParameters>]
 ```
 
@@ -61,3 +80,6 @@ $typemap = @{Id='Number'; Name='String'; CPU='Number'; Service='String'; Type='S
 $alignmap = @{Id='Center'; Name='Left'; CPU='Right'; Service='Left'; Type='Center'; Status='Center'}
 $processes | Export-WorksheetXlsx C:\config\ServicesByStatusAndProcesses.xlsx -Group $serviceByStatus -DataTypeMap $typemap -AlignMap $alignmap
 ```
+
+## Import-WorksheetXlsx usage examples
+(*Pending...*)
