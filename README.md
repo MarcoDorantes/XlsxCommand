@@ -8,7 +8,7 @@ PowerShell 7 Module with the following CmdLets: (1) CmdLet ```Export-WorksheetXl
 Install-Module -Name XlsxCommand
 ```
 
-## CmdLet syntax
+## Syntax of included CmdLets
 ### Export-WorksheetXlsx syntax
 ```
 Export-WorksheetXlsx [-DestinationExcelXLSXFilePath] <string>
