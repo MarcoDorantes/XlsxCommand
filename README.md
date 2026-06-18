@@ -159,11 +159,11 @@ This example reads the cell data from the first tab (by default if `TabName` par
 ```
 Import-WorksheetXlsx C:\config\Processes.xlsx
 ```
-| Id | Name | CPU |
-| ---- | -------- | ----- |
-| 5496 | Process1 | 0.046 |
-| 9504 | Process2 | 0.138 |
-| 8360 | Process3 | 0.751 |
+|Id|Name|CPU|
+|--|----|---|
+|5496|Process1|0.046|
+|9504|Process2|0.138|
+|8360|Process3|0.751|
 
 ### 9. Read an existing tab from an Excel XLSX Worksheet.
 This example reads the cell data from the tab named 'Stopped' of the Excel XLSX Worksheet which is the output in example #5 or in example #6:
