@@ -52,7 +52,7 @@ Export-WorksheetXlsx $home\Documents\ServicesByStatus.xlsx -Group $tabs
 ```
 
 ### 5. Create an Excel XLSX Worksheet with different tabs.
-This example writes the same values and tabs as the example #3 and the example #4 and specifies the cell data type and cell horizontal alignment for the corresponding data cells by property name:
+This example writes the same values and tabs as the example #3, the example #4, and also specifies the cell data type and cell horizontal alignment for the corresponding data cells by property name:
 ```
 Import-Module XlsxCommand
 $serviceByStatus = Get-Service | %{ [PSCustomObject]@{Service=$_.DisplayName; Type=$_.ServiceType; Status=$_.Status} } | group Status;
