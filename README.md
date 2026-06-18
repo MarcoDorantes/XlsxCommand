@@ -166,7 +166,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx
 |8360|Process3|0.751|
 
 ### 9. Read an existing tab from an Excel XLSX Worksheet.
-This example reads the cell data from the tab named 'Stopped' of the Excel XLSX Worksheet which is the output in example #5 or in example #6:
+This example reads the first three rows of cells from the tab named 'Stopped' of the Excel XLSX Worksheet which is the output in example #5 or in example #6:
 ```
 Import-WorksheetXlsx C:\config\Processes.xlsx -TabName 'Stopped' -First 3
 ```
