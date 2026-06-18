@@ -55,7 +55,7 @@ Export-WorksheetXlsx $home\Documents\ServicesByStatus.xlsx -Group $tabs
 This example writes the same values and tabs as the example #3 and the example #4 and specifies the cell data type and cell horizontal alignment for the corresponding data cells by property name:
 ```
 Import-Module XlsxCommand
-$serviceByStatus = Get-Service | %{ [PSCustomObject]@{Service=$_.DisplayName; Type=$_.ServiceType; Status=$_.Status} } | select -First 10 | group Status; 
+$serviceByStatus = Get-Service | %{ [PSCustomObject]@{Service=$_.DisplayName; Type=$_.ServiceType; Status=$_.Status} } | group Status;
 $processes = Get-Process | Select-Object -First 3 | Select-Object Id,Name,CPU
 $typemap = @{Id='Number'; Name='String'; CPU='Number'; Service='String'; Type='String'; Status='String'}
 $alignmap = @{Id='Center'; Name='Left'; CPU='Right'; Service='Left'; Type='Center'; Status='Center'}
