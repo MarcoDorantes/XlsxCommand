@@ -5,15 +5,13 @@ PowerShell 7 Module with the following CmdLets: (1) CmdLet ```Export-WorksheetXl
 
 ## Installation
 ### Installation prerequisites
+The ```XlsxCommand``` module has been tested (installation and included CmdLets) on the following runtime environment:
+1. [PowerShell 7.6.0](https://github.com/PowerShell/PowerShell/releases/tag/v7.6.0)
+2. PowerShellGet 2.2.5
 
 ### Installation process
 The installation process includes a location for the ```XlsxCommand``` module. Such location is determined by the ```Scope``` parameter of the ```Install-Module``` CmdLet. The accessibility of the installed module is determined by the value of that ```Scope``` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
-The ```XlsxCommand``` module has been tested (installation and included CmdLets) on the following runtime environment:
-1. PowerShell 7.6.0
-2. PowerShellGet 2.2.5
-As the default value for the ```Scope``` parameter varies, review the documentation about it:
-[Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
-
+As the default value for the ```Scope``` parameter varies, review the documentation about it: [Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
 ```
 Install-Module -Name XlsxCommand
 ```
