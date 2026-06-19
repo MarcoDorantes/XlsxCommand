@@ -145,7 +145,7 @@ $processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStat
 
 ## Import-WorksheetXlsx usage examples
 ### 7. Read existing tab names from an Excel XLSX Worksheet.
-This example reads the tab names found in the Excel XLSX Worksheet which is the output in example #5, or in example #6, and adds an instance of `System.String` to the PowerShell Pipeline per tab name:
+This example reads the tab names found in the Excel XLSX Worksheet created in example #5, or in example #6, and adds an instance of `System.String` to the PowerShell Pipeline per tab name:
 ```
 Import-WorksheetXlsx C:\config\Processes.xlsx -TabNames
 
@@ -155,7 +155,7 @@ Running
 ```
 
 ### 8. Read first existing tab from an Excel XLSX Worksheet.
-This example reads the header row and the cells from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet which is the output in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells:
+This example reads the header row and the cells from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells:
 ```
 Import-WorksheetXlsx C:\config\Processes.xlsx
 ```
@@ -166,7 +166,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx
 |8360|Process3|0.751|
 
 ### 9. Read an existing tab from an Excel XLSX Worksheet.
-This example reads the header row and the first three rows of cells from the tab named '**Stopped**' of the Excel XLSX Worksheet which is the output in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells:
+This example reads the header row and the first three rows of cells from the tab named '**Stopped**' of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells:
 ```
 Import-WorksheetXlsx C:\config\Processes.xlsx -TabName 'Stopped' -First 3
 ```
