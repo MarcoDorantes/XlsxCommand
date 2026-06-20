@@ -3,9 +3,9 @@
 ## Summary
 `XlsxCommand` is a PowerShell 7 Module with the following CmdLets: (1) CmdLet `Export-WorksheetXlsx` to create Excel XLSX format files, and (2) CmdLet `Import-WorksheetXlsx` to read from Excel XLSX format files.
 
-The cell data processing of both included CmdLets are based on a strict two-dimensional tabular data structure with rows and columns, i.e., a ‘table’. The first row is the header row with the names for each column. The next rows are data rows.
+The cell data processing of both included CmdLets are based on a strict two-dimensional tabular data structure with rows and columns, i.e., a ‘*table*’. The first row is the header row with the names for each column. The next rows are data rows.
 
-An Excel Worksheet is a two-dimensional spread array, not a strict tabular structure. Hence, the included CmdLets only work best if the cells in the Excel Worksheet are organized as a ‘table’.
+An Excel Worksheet is a two-dimensional spread array, not a strict tabular structure. Hence, the included CmdLets only work best if the cells in the Excel Worksheet are organized as a ‘*table*’.
 
 ## Installation
 ### Installation prerequisites
@@ -166,7 +166,7 @@ Running
 ```
 
 ### 8. Read first existing tab from an Excel XLSX Worksheet.
-This example reads the header row (the first row) and the next rows of cells from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells (the values of the properties are string representations of the cells in the row):
+This example reads the header row and the data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells (the values of the properties are string representations of the cells in the row):
 ```
 Import-Module XlsxCommand
 
@@ -180,7 +180,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx
 ```
 
 ### 9. Read an existing tab from an Excel XLSX Worksheet.
-This example reads the header row (the first row) and the next three rows of cells from the tab named '**Stopped**' of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells (the values of the properties are string representations of the cells in the row):
+This example reads the header row and the next three data rows from the tab named '**Stopped**' of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells (the values of the properties are string representations of the cells in the row):
 ```
 Import-Module XlsxCommand
 
