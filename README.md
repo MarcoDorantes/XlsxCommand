@@ -2,7 +2,9 @@
 
 ## Summary
 PowerShell 7 Module with the following CmdLets: (1) CmdLet ```Export-WorksheetXlsx``` to create Excel XLSX format files, and (2) CmdLet ```Import-WorksheetXlsx``` to read from Excel XLSX format files.
+
 The cell data processing of both included CmdLets are based on a strict two-dimensional tabular data structure with rows and columns, i.e., a ‘table’. The first row is the header row with the names for each column. The next rows are data rows.
+
 An Excel Worksheet is a two-dimensional spread array, not a strict tabular structure. Hence, the included CmdLets only work best if the cells in the Excel Worksheet are organized as a ‘table’.
 
 ## Installation
@@ -190,3 +192,4 @@ Agent Activation Service Win32OwnProcess   Stopped
 Witness Router Service   Win32ShareProcess Stopped
 Tabular Writer Service   Win32OwnProcess   Stopped
 ```
+
