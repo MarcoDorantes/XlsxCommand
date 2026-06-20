@@ -5,7 +5,7 @@
 
 The cell data processing of both included CmdLets are based on a strict two-dimensional tabular data structure with rows and columns, i.e., a ‘*table*’. The first row is the header row with the names for each column. The next rows are data rows.
 
-An Excel Worksheet is a two-dimensional spread array, not a strict tabular structure. Hence, the included CmdLets only work best if the cells in the Excel Worksheet are organized as a ‘*table*’.
+An Excel Worksheet tab is a two-dimensional **spread** array, not a strict tabular structure. Hence, the included CmdLets only work best if the cells of each tab in the Excel Worksheet are organized as a ‘*table*’.
 
 ## Installation
 ### Installation prerequisites
