@@ -1,7 +1,7 @@
 # XlsxCommand
 
 ## Summary
-`XlsxCommand` is a PowerShell 7 Module with the following CmdLets: (1) CmdLet `Export-WorksheetXlsx` to create Excel XLSX format files, and (2) CmdLet `Import-WorksheetXlsx` to read from Excel XLSX format files.
+`XlsxCommand` is a PowerShell 7 Module with the following CmdLets: (1) `Export-WorksheetXlsx` to create files as Excel XLSX format, and (2) `Import-WorksheetXlsx` to read from files as Excel XLSX format.
 
 The cell data processing of both included CmdLets are based on a strict two-dimensional tabular data structure with rows and columns, i.e., a ‘*table*’. The first row is the header row with the names for each column. The next rows are data rows.
 
