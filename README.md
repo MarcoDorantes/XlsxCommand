@@ -159,8 +159,8 @@ This example reads the header row and the cells from the first tab (by default i
 ```
 Import-WorksheetXlsx C:\config\Processes.xlsx
 
- Id Name   CPU
- -- ----   ---
+  Id Name     CPU
+  -- ----     ---
 5496 Process1 0.046
 9504 Process2 0.138
 8360 Process3 0.751
@@ -171,9 +171,10 @@ This example reads the header row and the first three rows of cells from the tab
 ```
 Import-WorksheetXlsx C:\config\Processes.xlsx -TabName 'Stopped' -First 3
 
-Service           Type       Status
--------           ----       ------
-Agent Activation Service Win32OwnProcess  Stopped
-Witness Router Service  Win32ShareProcess Stopped
-Tabular Writer Service  Win32OwnProcess  Stopped
+Service                  Type              Status
+-------                  ----              ------
+Agent Activation Service Win32OwnProcess   Stopped
+Witness Router Service   Win32ShareProcess Stopped
+Tabular Writer Service   Win32OwnProcess   Stopped
 ```
+
