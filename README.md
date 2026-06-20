@@ -1,7 +1,7 @@
 # XlsxCommand
 
 ## Summary
-`XlsxCommand` is a PowerShell 7 Module with the following CmdLets: (1) CmdLet ```Export-WorksheetXlsx``` to create Excel XLSX format files, and (2) CmdLet ```Import-WorksheetXlsx``` to read from Excel XLSX format files.
+`XlsxCommand` is a PowerShell 7 Module with the following CmdLets: (1) CmdLet `Export-WorksheetXlsx` to create Excel XLSX format files, and (2) CmdLet `Import-WorksheetXlsx` to read from Excel XLSX format files.
 
 The cell data processing of both included CmdLets are based on a strict two-dimensional tabular data structure with rows and columns, i.e., a ‘table’. The first row is the header row with the names for each column. The next rows are data rows.
 
@@ -9,13 +9,13 @@ An Excel Worksheet is a two-dimensional spread array, not a strict tabular struc
 
 ## Installation
 ### Installation prerequisites
-The ```XlsxCommand``` module has been tested (installation and included CmdLets) on the following runtime environment:
+The `XlsxCommand` module has been tested (installation and included CmdLets) on the following runtime environment:
 1. [PowerShell 7.6.0](https://github.com/PowerShell/PowerShell/releases/tag/v7.6.0)
 2. [PowerShellGet 2.2.5](https://learn.microsoft.com/en-us/powershell/module/powershellget/?view=powershellget-2.x)
 
 ### Installation process
-The installation process includes a location for the ```XlsxCommand``` module. Such location is determined by the ```Scope``` parameter of the ```Install-Module``` CmdLet. The accessibility of the installed module is determined by the value of that ```Scope``` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
-As the default value for the ```Scope``` parameter varies, checking  the related documentation is in order: [Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
+The installation process includes a location for the `XlsxCommand` module. Such location is determined by the `Scope` parameter of the `Install-Module` CmdLet. The accessibility of the installed module is determined by the value of that `Scope` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
+As the default value for the `Scope` parameter varies, checking  the related documentation is in order: [Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
 ```
 Install-Module -Name XlsxCommand
 ```
