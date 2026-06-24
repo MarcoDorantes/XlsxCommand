@@ -58,7 +58,7 @@ This example writes the values of the ID, Name, and CPU properties of the first 
 ```
 Import-Module XlsxCommand
 
-Get-Process | Select-Object -First 3 | Select-Object Id,Name,CPU | Export-WorksheetXlsx $home\Documents\FirstThreeProcesses.xlsx
+Get-Process | Select-Object -First 6 | Select-Object Id,Name,CPU | Export-WorksheetXlsx $home\Documents\FirstSixProcesses.xlsx
 ```
 
 ### 2. Create an Excel XLSX Worksheet with given cell formatting by property relative position.
@@ -66,7 +66,7 @@ This example writes the same values as the example #1 and specifies the cell dat
 ```
 Import-Module XlsxCommand
 
-Get-Process | Select-Object -First 3 | Select-Object Id,Name,CPU | Export-WorksheetXlsx $home\Documents\FirstThreeProcesses.xlsx -DataType Number,String,Number -Align Center,Left,Right
+Get-Process | Select-Object -First 6 | Select-Object Id,Name,CPU | Export-WorksheetXlsx $home\Documents\FirstSixProcesses.xlsx -DataType Number,String,Number -Align Center,Left,Right
 ```
 
 ### 3. Create an Excel XLSX Worksheet with given cell formatting by property name.
@@ -74,7 +74,7 @@ This example writes the same values as the example #1 and specifies the cell dat
 ```
 Import-Module XlsxCommand
 
-Get-Process | Select-Object -First 3 | Select-Object Id,Name,CPU | Export-WorksheetXlsx $home\Documents\FirstThreeProcesses.xlsx -DataTypeMap @{Id='Number'; Name='String'; CPU='Number'} -AlignMap @{Id='Center'; Name='Left'; CPU='Right'}
+Get-Process | Select-Object -First 6 | Select-Object Id,Name,CPU | Export-WorksheetXlsx $home\Documents\FirstSixProcesses.xlsx -DataTypeMap @{Id='Number'; Name='String'; CPU='Number'} -AlignMap @{Id='Center'; Name='Left'; CPU='Right'}
 ```
 
 ### 4. Create an Excel XLSX Worksheet with multiple tabs by group.
@@ -87,12 +87,12 @@ Export-WorksheetXlsx $home\Documents\ServicesByStatus.xlsx -Group $tabs
 ```
 
 ### 5. Create an Excel XLSX Worksheet with multiple tabs.
-This example writes the same values and tabs as the example #3, the example #4, and also specifies the cell data type and cell horizontal alignment for the corresponding data cells by property name:
+This example writes the same values and tabs as the example #3, or the example #4, and also specifies the cell data type and cell horizontal alignment for the corresponding data cells by property name:
 ```
 Import-Module XlsxCommand
 
 $serviceByStatus = Get-Service | %{ [PSCustomObject]@{Service=$_.DisplayName; Type=$_.ServiceType; Status=$_.Status} } | group Status;
-$processes = Get-Process | Select-Object -First 3 | Select-Object Id,Name,CPU
+$processes = Get-Process | Select-Object -First 6 | Select-Object Id,Name,CPU
 $typemap = @{Id='Number'; Name='String'; CPU='Number'; Service='String'; Type='String'; Status='String'}
 $alignmap = @{Id='Center'; Name='Left'; CPU='Right'; Service='Left'; Type='Center'; Status='Center'}
 $processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStatus -DataTypeMap $typemap -AlignMap $alignmap
@@ -148,7 +148,7 @@ class ServiceView
 }
 
 $serviceByStatus = Get-Service | %{ [ServiceView]::new($_) } | group Status;
-$processes = Get-Process | Select-Object -First 3 | %{ [ProcessView]::new($_) }
+$processes = Get-Process | Select-Object -First 6 | %{ [ProcessView]::new($_) }
 $processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStatus
 ```
 
@@ -166,17 +166,17 @@ Running
 ```
 
 ### 8. Read first existing tab from an Excel XLSX Worksheet.
-This example reads the header row and the data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells (the values of the properties are string representations of the cells in the row):
+This example reads the header row and the first three data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells (the values of the properties are string representations of the cells in the row):
 ```
 Import-Module XlsxCommand
 
-Import-WorksheetXlsx C:\config\Processes.xlsx
+Import-WorksheetXlsx C:\config\Processes.xlsx -First 3
 
   Id Name     CPU
   -- ----     ---
-5496 Process1 0.046
-9504 Process2 0.138
-8360 Process3 0.751
+2864 Process1 79.20
+8208 Process2 48.56
+6864 Process3 45.62
 ```
 
 ### 9. Read an existing tab by name from an Excel XLSX Worksheet.
@@ -191,5 +191,20 @@ Service                  Type              Status
 Agent Activation Service Win32OwnProcess   Stopped
 Witness Router Service   Win32ShareProcess Stopped
 Tabular Writer Service   Win32OwnProcess   Stopped
+```
+
+### 10. Read data rows with empty or null Excel cells from an existing tab from an Excel XLSX Worksheet.
+This example reads the header row and the last three data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells (the values of the properties are string representations of the cells in the row):
+```
+Import-Module XlsxCommand
+
+Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3
+
+
+  Id Name     CPU
+  -- ----     ---
+4164 Process4 0.16
+4436 Process5 
+ 748 Process6 
 ```
 
