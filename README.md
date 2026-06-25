@@ -193,13 +193,12 @@ Witness Router Service   Win32ShareProcess Stopped
 Tabular Writer Service   Win32OwnProcess   Stopped
 ```
 
-### 10. Read data rows with empty or null Excel cells from an existing tab from an Excel XLSX Worksheet.
-This example reads the header row and the last three data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells (the values of the properties are string representations of the cells in the row):
+### 10. Read data rows with some null Excel cells from an Excel XLSX Worksheet.
+This example reads the header row and the last three data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells. The values of the properties are string representations of the cells in the row; in this example, some of those string values are null:
 ```
 Import-Module XlsxCommand
 
 Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3
-
 
   Id Name     CPU
   -- ----     ---
@@ -207,4 +206,3 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3
 4436 Process5 
  748 Process6 
 ```
-
