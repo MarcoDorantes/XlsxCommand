@@ -194,7 +194,7 @@ Tabular Writer Service   Win32OwnProcess   Stopped
 ```
 
 ### 10. Read data rows of cells with some null values from an Excel XLSX Worksheet.
-This example reads the header row and the last three data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells. The values of the properties are string representations of each cell value in the row; in this example, some of those string values are null:
+This example reads the header row and the last three data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells. The values of the properties are string representations of each cell value in the row; in this example, some of those string values are null (see values of the CPU property):
 ```
 Import-Module XlsxCommand
 
