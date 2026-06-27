@@ -166,7 +166,7 @@ Running
 ```
 
 ### 8. Read first existing tab from an Excel XLSX Worksheet.
-This example reads the header row and the first three data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells (the values of the properties are string representations of the cells in the row):
+This example reads the header row and the first three data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per data row (the values of the properties are string representations of the cells in the row):
 ```
 Import-Module XlsxCommand
 
@@ -180,7 +180,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -First 3
 ```
 
 ### 9. Read an existing tab by name from an Excel XLSX Worksheet.
-This example reads the header row and the next three data rows from the tab named '**Stopped**' of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells (the values of the properties are string representations of the cells in the row):
+This example reads the header row and the next three data rows from the tab named '**Stopped**' of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per data row (the values of the properties are string representations of the cells in the row):
 ```
 Import-Module XlsxCommand
 
@@ -194,7 +194,7 @@ Tabular Writer Service   Win32OwnProcess   Stopped
 ```
 
 ### 10. Read data rows of cells with some null values from an Excel XLSX Worksheet.
-This example reads the header row and the last three data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per row of cells. The values of the properties are string representations of each cell value in the row; in this example, some of those string values are null (see values of the `CPU` property):
+This example reads the header row and the last three data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per data row. The values of the properties are string representations of each cell value in the row; in this example, some of those string values are null (see values of the `CPU` property):
 ```
 Import-Module XlsxCommand
 
@@ -208,7 +208,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3
 ```
 
 ### 11. Read data rows of cells as instances of a PowerShell class from an Excel XLSX Worksheet.
-This example ignores the header row and reads the first three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per row of cells. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type:
+This example ignores the header row and reads the first three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type:
 ```
 Import-Module XlsxCommand
 
