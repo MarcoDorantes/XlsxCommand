@@ -227,7 +227,7 @@ ProcessID ProcessName
      6864 Process3
 ```
 
-12. Read cell value in a data row as numeric from an Excel XLSX Worksheet.
+### 12. Read cell value in a data row as numeric from an Excel XLSX Worksheet.
 This example ignores the header row and reads the last three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For the case of floating-point numeric representations, the parsing process of the property values requires an attribute as shown:
 ```
 $ProcessViewSource = @'
