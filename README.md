@@ -208,7 +208,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3
 ```
 
 ### 11. Read data rows of cells as instances of a PowerShell class from an Excel XLSX Worksheet.
-This example ignores the header row and reads the first three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type:
+This example ignores the header row and reads the first three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For the case of integer representations without character separators for thousands, the values are parsed directly (see the ProcessID property declaration):
 ```
 Import-Module XlsxCommand
 
@@ -225,4 +225,33 @@ ProcessID ProcessName
      2864 Process1
      8208 Process2
      6864 Process3
+```
+
+12. Read cell value in a data row as numeric from an Excel XLSX Worksheet.
+This example ignores the header row and reads the last three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For the case of floating-point numeric representations, the parsing process of the property values requires an attribute as shown:
+```
+$ProcessViewSource = @'
+public class ProcessView
+{
+  public int Id { get; set; }
+
+  public string Name { get; set; }
+
+  [IllyumL2T.Core.ParseBehavior(NumberStyle = System.Globalization.NumberStyles.Number)]
+  public double CPU { get; set; }
+}
+'@
+$module_path = Split-Path (Get-Module XlsxCommand | select -expand Path)
+$assemblies = @(
+    Join-Path $module_path 'IllyumL2T.Core.dll'
+    Join-Path $module_path 'netstandard.dll'
+)
+Add-Type -TypeDefinition $ProcessViewSource -ReferencedAssemblies $assemblies
+Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3 -Schema [ProcessView]
+
+   Id Name     CPU
+   -- ----     ---
+ 4164 Process4 0.16
+ 4436 Process5 0.00
+  748 Process6 0.00
 ```
