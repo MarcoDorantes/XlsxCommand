@@ -206,3 +206,23 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3
 4436 Process5 
  748 Process6 
 ```
+
+### 11. Read data rows of cells as instances of a PowerShell class from an Excel XLSX Worksheet.
+This example reads data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per row of cells. The values of the properties are parsed from the corresponding string representations of each cell value in the row by position into the corresponding property type:
+```
+Import-Module XlsxCommand
+
+class ProcessView
+{
+    [int]$ProcessID
+    [string]$ProcessName
+}
+
+Import-WorksheetXlsx C:\config\Processes.xlsx -First 3 -Schema [ProcessView]
+
+ProcessID ProcessName
+--------- -----------
+     2864 Process1
+     8208 Process2
+     6864 Process3
+```
