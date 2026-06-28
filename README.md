@@ -72,7 +72,9 @@ Import-Module XlsxCommand
 
 Get-Process | Select-Object -First 6 `
     | Select-Object Id,Name,CPU `
-    | Export-WorksheetXlsx $home\Documents\FirstSixProcesses.xlsx -DataType Number,String,Number -Align Center,Left,Right
+    | Export-WorksheetXlsx $home\Documents\FirstSixProcesses.xlsx `
+        -DataType Number,String,Number `
+        -Align Center,Left,Right
 ```
 
 ### 3. Create an Excel XLSX Worksheet with given cell formatting by property name.
@@ -80,7 +82,11 @@ This example writes the same values as the example #1 and specifies the cell dat
 ```
 Import-Module XlsxCommand
 
-Get-Process | Select-Object -First 6 | Select-Object Id,Name,CPU | Export-WorksheetXlsx $home\Documents\FirstSixProcesses.xlsx -DataTypeMap @{Id='Number'; Name='String'; CPU='Number'} -AlignMap @{Id='Center'; Name='Left'; CPU='Right'}
+Get-Process | Select-Object -First 6 `
+    | Select-Object Id,Name,CPU `
+    | Export-WorksheetXlsx $home\Documents\FirstSixProcesses.xlsx `
+        -DataTypeMap @{Id='Number'; Name='String'; CPU='Number'} `
+        -AlignMap @{Id='Center'; Name='Left'; CPU='Right'}
 ```
 
 ### 4. Create an Excel XLSX Worksheet with multiple tabs by group.
@@ -88,7 +94,9 @@ This example writes the values of the DisplayName, ServiceType, and Status prope
 ```
 Import-Module XlsxCommand
 
-$tabs = Get-Service | %{ [PSCustomObject]@{Service=$_.DisplayName; Type=$_.ServiceType; Status=$_.Status} } | group Status;
+$tabs = Get-Service `
+    | %{ [PSCustomObject]@{Service=$_.DisplayName; Type=$_.ServiceType; Status=$_.Status} } `
+    | group Status
 Export-WorksheetXlsx $home\Documents\ServicesByStatus.xlsx -Group $tabs
 ```
 
