@@ -1,11 +1,11 @@
 # XlsxCommand
 
 ## Summary
-`XlsxCommand` is a PowerShell 7 Module with the following CmdLets: (1) `Export-WorksheetXlsx` to create files as Excel XLSX format, and (2) `Import-WorksheetXlsx` to read from files as Excel XLSX format.
+`XlsxCommand` is a PowerShell 7 Module with the following CmdLets: (1) `Export-WorksheetXlsx` to create Excel Worksheet tabs and store them as files in Excel Workbook format (XLSX), and (2) `Import-WorksheetXlsx` to read Excel Worksheet tabs from files in Excel Workbook format (XLSX).
 
-The cell data processing of both included CmdLets are based on a strict two-dimensional tabular data structure with rows and columns, i.e., a ‘*table*’. The first row is the header row with the names for each column. The next rows are data rows.
+The cell data processing of both included CmdLets are based on a strict two-dimensional tabular data structure with rows and columns, i.e., a ‘*table*’. The first row is the header row. The next rows are data rows.
 
-An Excel Worksheet tab is a two-dimensional **spread** array, not a strict tabular structure. Hence, the included CmdLets only work best if the cells of each tab in the Excel Worksheet are organized as a ‘*table*’.
+An Excel Worksheet tab is a two-dimensional **spread** array, not a strict tabular structure. Hence, the included CmdLets only work best if the cells of each Worksheet tab in an Excel Workbook are organized as a ‘*table*’.
 
 Like the [PowerShell `Import-Csv` CmdLet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv#notes), the header row determines the number of columns and the column names. The column names are also the names of the properties of the output objects added to the PowerShell Pipeline. The header row is interpreted to be the column headers, unless you use the `Header` parameter to specify column headers. If any row has more values than the header row, the additional values are ignored. On the other hand, if the `Schema` parameter is used, then the names of the properties of the output objects added to the PowerShell Pipeline are determined by the provided type.
 
