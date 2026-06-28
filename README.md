@@ -101,15 +101,23 @@ Export-WorksheetXlsx $home\Documents\ServicesByStatus.xlsx -Group $tabs
 ```
 
 ### 5. Create an Excel XLSX Worksheet with multiple tabs.
-This example writes the same values and tabs as the example #3, or the example #4, and also specifies the cell data type and cell horizontal alignment for the corresponding data cells by property name:
+This example writes the same values and tabs as the example #3 plus the example #4, and also specifies the cell data type and cell horizontal alignment for the corresponding data cells by property name:
 ```
 Import-Module XlsxCommand
 
-$serviceByStatus = Get-Service | %{ [PSCustomObject]@{Service=$_.DisplayName; Type=$_.ServiceType; Status=$_.Status} } | group Status;
+$serviceByStatus = Get-Service `
+    | %{ [PSCustomObject]@{Service=$_.DisplayName; Type=$_.ServiceType; Status=$_.Status} } `
+    | group Status
+
 $processes = Get-Process | Select-Object -First 6 | Select-Object Id,Name,CPU
+
 $typemap = @{Id='Number'; Name='String'; CPU='Number'; Service='String'; Type='String'; Status='String'}
 $alignmap = @{Id='Center'; Name='Left'; CPU='Right'; Service='Left'; Type='Center'; Status='Center'}
-$processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStatus -DataTypeMap $typemap -AlignMap $alignmap
+
+$processes | Export-WorksheetXlsx C:\config\Processes.xlsx `
+    -Group $serviceByStatus `
+    -DataTypeMap $typemap `
+    -AlignMap $alignmap
 ```
 
 ### 6. Create an Excel XLSX Worksheet with multiple tabs using PowerShell classes.
@@ -163,6 +171,7 @@ class ServiceView
 
 $serviceByStatus = Get-Service | %{ [ServiceView]::new($_) } | group Status;
 $processes = Get-Process | Select-Object -First 6 | %{ [ProcessView]::new($_) }
+
 $processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStatus
 ```
 
