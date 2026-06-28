@@ -231,7 +231,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3
 ```
 
 ### 11. Read data rows of cells as instances of a PowerShell class from an Excel XLSX Worksheet.
-This example ignores the header row and reads the first three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For the case of integer representations without character separators for thousands, the values are parsed directly (see the `ProcessID` property declaration):
+This example ignores the header row and reads the first three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For the case of integer representations without character separators for thousands, the values are parsed directly (see the `$ProcessID` property declaration):
 ```
 Import-Module XlsxCommand
 
@@ -251,7 +251,7 @@ ProcessID ProcessName
 ```
 
 ### 12. Read cell values of a data row as numeric from an Excel XLSX Worksheet.
-This example ignores the header row and reads the last three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of floating-point numeric (`double`, *whose default value is zero*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires an attribute as shown:
+This example ignores the header row and reads the last three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of floating-point numeric (`double`, *whose default value is zero*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires a custom .NET CLR attribute as shown:
 ```
 $ProcessViewSource = @'
 public class ProcessView
@@ -281,7 +281,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3 -Schema [ProcessView]
 ```
 
 ### 13. Read cell values of a data row as nullable numeric from an Excel XLSX Worksheet.
-This example ignores the header row and reads the last three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of ***nullable*** floating-point numeric (`System.Nullable<double>`, *whose default value is null*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires an attribute as shown:
+This example ignores the header row and reads the last three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of ***nullable*** floating-point numeric (`System.Nullable<double>`, *whose default value is null*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires a custom .NET CLR attribute as shown:
 ```
 $ProcessViewSource = @'
 public class ProcessView
