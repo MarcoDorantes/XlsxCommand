@@ -16,7 +16,7 @@ The `XlsxCommand` module has been tested (installation and included CmdLets) on 
 2. [PowerShellGet 2.2.5](https://learn.microsoft.com/en-us/powershell/module/powershellget/?view=powershellget-2.x)
 
 ### Installation process
-The installation process includes a location for the `XlsxCommand` module. Such location is determined by the `Scope` parameter of the `Install-Module` CmdLet. The accessibility of the installed module is determined by the value of that `Scope` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
+The installation process includes a location for the `XlsxCommand` module. Such location is determined by the `Scope` parameter of the `Install-Module` CmdLet. The accessibility of the installed module is also determined by the value of that `Scope` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
 As the default value for the `Scope` parameter varies, checking  the related documentation is in order: [Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
 ```
 Install-Module -Name XlsxCommand
