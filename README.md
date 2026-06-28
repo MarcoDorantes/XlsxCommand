@@ -56,7 +56,7 @@ Import-WorksheetXlsx [-ExcelXLSXFilePath] <string>
 
 ## Export-WorksheetXlsx usage examples
 ### 1. Create an Excel XLSX Worksheet with default cell formats.
-This example writes the values of the ID, Name, and CPU properties of the first 6 current processes into a new Worksheet and stores them as a new Excel Workbook (XLSX) file at the given path:
+This example writes the values of the ID, Name, and CPU properties of the first 6 current processes into a new Worksheet tab and stores them as a new Excel Workbook (XLSX) file at the given path:
 ```
 Import-Module XlsxCommand
 
@@ -70,7 +70,9 @@ This example writes the same values as the example #1 and specifies the cell dat
 ```
 Import-Module XlsxCommand
 
-Get-Process | Select-Object -First 6 | Select-Object Id,Name,CPU | Export-WorksheetXlsx $home\Documents\FirstSixProcesses.xlsx -DataType Number,String,Number -Align Center,Left,Right
+Get-Process | Select-Object -First 6 `
+    | Select-Object Id,Name,CPU `
+    | Export-WorksheetXlsx $home\Documents\FirstSixProcesses.xlsx -DataType Number,String,Number -Align Center,Left,Right
 ```
 
 ### 3. Create an Excel XLSX Worksheet with given cell formatting by property name.
