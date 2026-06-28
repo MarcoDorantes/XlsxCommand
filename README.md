@@ -55,8 +55,8 @@ Import-WorksheetXlsx [-ExcelXLSXFilePath] <string>
 ```
 
 ## Export-WorksheetXlsx usage examples
-### 1. Create an Excel XLSX Worksheet with default cell formats.
-This example writes the values of the ID, Name, and CPU properties of the first 6 current processes into a new Worksheet tab and stores them as a new Excel Workbook (XLSX) file at the given path:
+### 1. Create an Excel Workbook (XLSX) of one Worksheet tab with default cell formats.
+This example writes the values of the ID, Name, and CPU properties of the first six current processes into a new Worksheet tab and stores them as a new Excel Workbook (XLSX) file at the given path:
 ```
 Import-Module XlsxCommand
 
@@ -65,7 +65,7 @@ Get-Process | Select-Object -First 6 `
     | Export-WorksheetXlsx $home\Documents\FirstSixProcesses.xlsx
 ```
 
-### 2. Create an Excel XLSX Worksheet with given cell formatting by property relative position.
+### 2. Create an Excel Workbook (XLSX) of one Worksheet tab with given cell formatting by column relative position.
 This example writes the same values as the example #1 and specifies the cell data type and cell horizontal alignment for the corresponding data cells by property relative position:
 ```
 Import-Module XlsxCommand
@@ -77,7 +77,7 @@ Get-Process | Select-Object -First 6 `
         -Align Center,Left,Right
 ```
 
-### 3. Create an Excel XLSX Worksheet with given cell formatting by property name.
+### 3. Create an Excel Workbook (XLSX) of one Worksheet tab with given cell formatting by property name.
 This example writes the same values as the example #1 and specifies the cell data type and cell horizontal alignment for the corresponding data cells by property name:
 ```
 Import-Module XlsxCommand
@@ -89,8 +89,8 @@ Get-Process | Select-Object -First 6 `
         -AlignMap @{Id='Center'; Name='Left'; CPU='Right'}
 ```
 
-### 4. Create an Excel XLSX Worksheet with multiple tabs by group.
-This example writes the values of the DisplayName, ServiceType, and Status properties of the current services, grouped by Status, separated in different tabs by group, into a new Excel Worksheet XLSX file at the given path:
+### 4. Create an Excel Workbook (XLSX) with multiple Worksheet tabs by group.
+This example writes the values of the DisplayName, ServiceType, and Status properties of the current services, grouped by Status, separated in different Worksheet tabs by group, into a new Excel Workbook (XLSX) file at the given path:
 ```
 Import-Module XlsxCommand
 
@@ -176,8 +176,8 @@ $processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStat
 ```
 
 ## Import-WorksheetXlsx usage examples
-### 7. Read existing tab names from an Excel XLSX Worksheet.
-This example reads the tab names found in the Excel XLSX Worksheet created in example #5, or in example #6, and adds an instance of `System.String` to the PowerShell Pipeline per tab name:
+### 7. Read all existing tab names from an Excel Workbook (XLSX), not just Worksheet tabs.
+This example reads all Worksheet tab names found in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds an instance of `System.String` to the PowerShell Pipeline per tab name:
 ```
 Import-Module XlsxCommand
 
@@ -216,8 +216,8 @@ Witness Router Service   Win32ShareProcess Stopped
 Tabular Writer Service   Win32OwnProcess   Stopped
 ```
 
-### 10. Read data rows of cells with some null values from an Excel XLSX Worksheet.
-This example reads the header row and the last three data rows from the first tab (by default if `TabName` parameter is not specified) of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per data row. The values of the properties are string representations of each cell value in the row; in this example, some of those string values are null (see values of the `CPU` property):
+### 10. Read data rows of cells with some null values from an Excel Worksheet tab.
+This example reads the header row and the last three data rows from the first Worksheet tab (by default if `TabName` parameter is not specified) in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per data row. The values of the properties are string representations of each cell value in the row; in this example, some of those string values are `null` (see values of the `CPU` property):
 ```
 Import-Module XlsxCommand
 
@@ -230,8 +230,8 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3
  748 Process6 
 ```
 
-### 11. Read data rows of cells as instances of a PowerShell class from an Excel XLSX Worksheet.
-This example ignores the header row and reads the first three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For the case of integer representations without character separators for thousands, the values are parsed directly (see the `$ProcessID` property declaration):
+### 11. Read data rows of cells as instances of a PowerShell class from an Excel Worksheet tab.
+This example ignores the header row and reads the first three data rows of the first Worksheet in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For the case of integer representations without character separators for thousands, the values are parsed directly (see the `$ProcessID` property declaration):
 ```
 Import-Module XlsxCommand
 
@@ -250,8 +250,8 @@ ProcessID ProcessName
      6864 Process3
 ```
 
-### 12. Read cell values of a data row as numeric from an Excel XLSX Worksheet.
-This example ignores the header row and reads the last three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of floating-point numeric (`double`, *whose default value is zero*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires a custom .NET CLR attribute as shown:
+### 12. Read cell values of a data row as numeric from an Excel Worksheet tab.
+This example ignores the header row and reads the last three data rows of the first Worksheet in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of floating-point numeric (`double`, *whose default value is zero*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires a custom .NET CLR attribute as shown:
 ```
 $ProcessViewSource = @'
 public class ProcessView
@@ -280,8 +280,8 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3 -Schema [ProcessView]
   748 Process6 0.00
 ```
 
-### 13. Read cell values of a data row as nullable numeric from an Excel XLSX Worksheet.
-This example ignores the header row and reads the last three data rows of the Excel XLSX Worksheet created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of ***nullable*** floating-point numeric (`System.Nullable<double>`, *whose default value is null*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires a custom .NET CLR attribute as shown:
+### 13. Read cell values of a data row as nullable numeric from an Excel Worksheet tab.
+This example ignores the header row and reads the last three data rows of the first Worksheet in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of ***nullable*** floating-point numeric (`System.Nullable<double>`, *whose default value is null*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires a custom .NET CLR attribute as shown:
 ```
 $ProcessViewSource = @'
 public class ProcessView
