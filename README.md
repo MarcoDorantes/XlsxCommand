@@ -97,6 +97,7 @@ Import-Module XlsxCommand
 $tabs = Get-Service `
     | %{ [PSCustomObject]@{Service=$_.DisplayName; Type=$_.ServiceType; Status=$_.Status} } `
     | group Status
+
 Export-WorksheetXlsx $home\Documents\ServicesByStatus.xlsx -Group $tabs
 ```
 
