@@ -9,6 +9,21 @@ An Excel Worksheet tab is a two-dimensional **spread** array, not a strict tabul
 
 Like the [PowerShell `Import-Csv` CmdLet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv#notes), the header row determines the number of columns and the column names. The column names are also the names of the properties of the output objects added to the PowerShell Pipeline. The header row is interpreted to be the column headers, unless you use the `Header` parameter to specify column headers. If any row has more values than the header row, the additional values are ignored. On the other hand, if the `Schema` parameter is used, then the names of the properties of the output objects added to the PowerShell Pipeline are determined by the provided type.
 
+## Major external dependency graph
+By "major" we mean a dependency which provides most of the functionality of a feature.
+By "external" we mean a dependency that is fully independent of `XlsxCommand` CmdLet.
+```
+                        XlsxCommand
+                         |       |
+                         |       |
+                         V       V
+    ExcelXLSXWorksheetWriter   ExcelXLSXWorksheetReader
+                         |       |                 |
+                         |       |                 |
+                         V       V                 V
+	         DocumentFormat.OpenXml       [IllyumL2T.Core](https://github.com/Illyum/l2t)
+```
+
 ## Installation
 ### Installation prerequisites
 The `XlsxCommand` module has been tested (installation and included CmdLets) on the following runtime environment:
