@@ -30,9 +30,9 @@ By '*external*' we mean a dependency whose design evolution is self-governing an
 `Export-WorksheetXlsx` transitively depends on [DocumentFormat.OpenXml](https://www.nuget.org/packages/DocumentFormat.OpenXml/) for Microsoft Office Open XML Spreadsheet document format processing.
 
 ### Import-WorksheetXlsx CmdLet external dependencies
-`Import-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetReader](https://www.nuget.org/packages/ExcelXLSXWorksheetReader/) for individual two-dimensional tabular grid, a set of two-dimensional tabular grids, and Linq-To-XLSX abstrations.
+`Import-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetReader](https://www.nuget.org/packages/ExcelXLSXWorksheetReader/) for individual two-dimensional tabular grid, a set of two-dimensional tabular grids, and LINQ-to-XLSX abstrations.
 
-`Import-WorksheetXlsx` transitively depends on [IllyumL2T.Core](https://www.nuget.org/packages/IllyumL2T.Core/) for Linq-To-XLSX processing.
+`Import-WorksheetXlsx` transitively depends on [IllyumL2T.Core](https://www.nuget.org/packages/IllyumL2T.Core/) for LINQ-to-XLSX processing.
 
 `Import-WorksheetXlsx` transitively depends on [DocumentFormat.OpenXml](https://www.nuget.org/packages/DocumentFormat.OpenXml/) for Microsoft Office Open XML Spreadsheet document format processing.
 
