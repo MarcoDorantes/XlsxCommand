@@ -14,7 +14,7 @@ By '*major*' we mean a dependency which provides most of the functionality for a
 
 By '*external*' we mean a dependency whose design evolution is self-governing and separated from `XlsxCommand` CmdLet.
 ```
-                                            XlsxCommand
+                                           XlsxCommand
                                             |       |
                                             |       |
                                             V       V
@@ -25,12 +25,12 @@ By '*external*' we mean a dependency whose design evolution is self-governing an
                                     DocumentFormat.OpenXml       IllyumL2T.Core
 ```
 ### Export-WorksheetXlsx CmdLet external dependencies
-`Export-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetWriter](https://www.nuget.org/packages/ExcelXLSXWorksheetWriter/) for individual tabular grid abstration and a set of tabular grids abstration.
+`Export-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetWriter](https://www.nuget.org/packages/ExcelXLSXWorksheetWriter/) for individual two-dimensional tabular grid and a set of two-dimensional tabular grids abstrations.
 
 `Export-WorksheetXlsx` transitively depends on [DocumentFormat.OpenXml](https://www.nuget.org/packages/DocumentFormat.OpenXml/) for Microsoft Office Open XML Spreadsheet document format processing.
 
 ### Import-WorksheetXlsx CmdLet external dependencies
-`Import-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetReader](https://www.nuget.org/packages/ExcelXLSXWorksheetReader/) for individual tabular grid abstration, a set of tabular grids abstration, and Linq-To-XLSX abstration.
+`Import-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetReader](https://www.nuget.org/packages/ExcelXLSXWorksheetReader/) for individual two-dimensional tabular grid, a set of two-dimensional tabular grids, and Linq-To-XLSX abstrations.
 
 `Import-WorksheetXlsx` transitively depends on [IllyumL2T.Core](https://www.nuget.org/packages/IllyumL2T.Core/) for Linq-To-XLSX processing.
 
