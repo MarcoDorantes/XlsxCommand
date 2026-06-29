@@ -10,8 +10,9 @@ An Excel Worksheet tab is a two-dimensional **spread** array, not a strict tabul
 Like the [PowerShell `Import-Csv` CmdLet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv#notes), the header row determines the number of columns and the column names. The column names are also the names of the properties of the output objects added to the PowerShell Pipeline. The header row is interpreted to be the column headers, unless you use the `Header` parameter to specify column headers. If any row has more values than the header row, the additional values are ignored. On the other hand, if the `Schema` parameter is used, then the names of the properties of the output objects added to the PowerShell Pipeline are determined by the provided type.
 
 ## Major external dependency graph
-By "major" we mean a dependency which provides most of the functionality of a feature.
-By "external" we mean a dependency that is fully independent of `XlsxCommand` CmdLet.
+By '*major*' we mean a dependency which provides most of the functionality for a feature.
+
+By '*external*' we mean a dependency whose design evolution is self-governing and separated from `XlsxCommand` CmdLet.
 ```
                         XlsxCommand
                          |       |
@@ -23,6 +24,17 @@ By "external" we mean a dependency that is fully independent of `XlsxCommand` Cm
                          V       V                 V
 	         DocumentFormat.OpenXml         IllyumL2T.Core
 ```
+### Export-WorksheetXlsx CmdLet external dependencies
+`Export-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetWriter](https://www.nuget.org/packages/ExcelXLSXWorksheetWriter/) for individual tabular grid abstration and a set of tabular grids abstration.
+
+`Export-WorksheetXlsx` transitively depends on [DocumentFormat.OpenXml](https://www.nuget.org/packages/DocumentFormat.OpenXml/) for Microsoft Office Open XML Spreadsheet document format processing.
+
+### Import-WorksheetXlsx CmdLet external dependencies
+`Import-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetReader](https://www.nuget.org/packages/ExcelXLSXWorksheetReader/) for individual tabular grid abstration, a set of tabular grids abstration, and Linq-To-XLSX abstration.
+
+`Import-WorksheetXlsx` transitively depends on [IllyumL2T.Core](https://www.nuget.org/packages/IllyumL2T.Core/) for Linq-To-XLSX processing.
+
+`Import-WorksheetXlsx` transitively depends on [DocumentFormat.OpenXml](https://www.nuget.org/packages/DocumentFormat.OpenXml/) for Microsoft Office Open XML Spreadsheet document format processing.
 
 ## Installation
 ### Installation prerequisites
