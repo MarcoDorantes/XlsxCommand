@@ -14,15 +14,15 @@ By '*major*' we mean a dependency which provides most of the functionality for a
 
 By '*external*' we mean a dependency whose design evolution is self-governing and separated from `XlsxCommand` CmdLet.
 ```
-                            XlsxCommand
-                             |       |
-                             |       |
-                             V       V
-        ExcelXLSXWorksheetWriter   ExcelXLSXWorksheetReader
-                             |       |                 |
-                             |       |                 |
-                             V       V                 V
-    	            DocumentFormat.OpenXml       IllyumL2T.Core
+                                            XlsxCommand
+                                            |       |
+                                            |       |
+                                            V       V
+                        ExcelXLSXWorksheetWriter   ExcelXLSXWorksheetReader
+                                            |       |                 |
+                                            |       |                 |
+                                            V       V                 V
+                                    DocumentFormat.OpenXml       IllyumL2T.Core
 ```
 ### Export-WorksheetXlsx CmdLet external dependencies
 `Export-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetWriter](https://www.nuget.org/packages/ExcelXLSXWorksheetWriter/) for individual tabular grid abstration and a set of tabular grids abstration.
