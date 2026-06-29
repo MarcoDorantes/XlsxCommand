@@ -21,7 +21,7 @@ By "external" we mean a dependency that is fully independent of `XlsxCommand` Cm
                          |       |                 |
                          |       |                 |
                          V       V                 V
-	         DocumentFormat.OpenXml       [IllyumL2T.Core](https://github.com/Illyum/l2t)
+	         DocumentFormat.OpenXml         IllyumL2T.Core
 ```
 
 ## Installation
