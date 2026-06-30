@@ -12,7 +12,7 @@ Like the [PowerShell `Import-Csv` Cmdlet](https://learn.microsoft.com/en-us/powe
 ## Major external dependency graph
 By '*major*' we mean a dependency which provides most of the functionality for a feature.
 
-By '*external*' we mean a dependency whose design evolution is self-governing and separated from `XlsxCommand` cmdlet.
+By '*external*' we mean a dependency whose design evolution is self-governing and separated from `XlsxCommand`.
 ```
                                            XlsxCommand
                                             |       |
