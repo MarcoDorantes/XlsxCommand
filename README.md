@@ -1,18 +1,18 @@
 # XlsxCommand
 
 ## Summary
-`XlsxCommand` is a PowerShell 7 Module with the following CmdLets: (1) `Export-WorksheetXlsx` to create Excel Worksheet tabs and store them as files in Excel Workbook format (XLSX), and (2) `Import-WorksheetXlsx` to read Excel Worksheet tabs from files in Excel Workbook format (XLSX).
+`XlsxCommand` is a PowerShell 7 Module with the following cmdlets: (1) `Export-WorksheetXlsx` to create Excel Worksheet tabs and store them as files in Excel Workbook format (XLSX), and (2) `Import-WorksheetXlsx` to read Excel Worksheet tabs from files in Excel Workbook format (XLSX).
 
-The cell data processing of both included CmdLets are based on a strict two-dimensional tabular data structure with rows and columns, i.e., a ‘*table*’. The first row is the header row. The next rows are data rows.
+The cell data processing of both included cmdlets are based on a strict two-dimensional tabular data structure with rows and columns, i.e., a ‘*table*’. The first row is the header row. The next rows are data rows.
 
-An Excel Worksheet tab is a two-dimensional **spread** array, not a strict tabular structure. Hence, the included CmdLets only work best if the cells of each Worksheet tab in an Excel Workbook are organized as a ‘*table*’.
+An Excel Worksheet tab is a two-dimensional **spread** array, not a strict tabular structure. Hence, the included cmdlets only work best if the cells of each Worksheet tab in an Excel Workbook are organized as a ‘*table*’.
 
-Like the [PowerShell `Import-Csv` CmdLet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv#notes), the header row determines the number of columns and the column names. The column names are also the names of the properties of the output objects added to the PowerShell Pipeline. The header row is interpreted to be the column headers, unless you use the `Header` parameter to specify column headers. If any row has more values than the header row, the additional values are ignored. On the other hand, if the `Schema` parameter is used, then the names of the properties of the output objects added to the PowerShell Pipeline are determined by the provided type.
+Like the [PowerShell `Import-Csv` Cmdlet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv#notes), the header row determines the number of columns and the column names. The column names are also the names of the properties of the output objects added to the PowerShell Pipeline. The header row is interpreted to be the column headers, unless you use the `Header` parameter to specify column headers. If any row has more values than the header row, the additional values are ignored. On the other hand, if the `Schema` parameter is used, then the names of the properties of the output objects added to the PowerShell Pipeline are determined by the provided type.
 
 ## Major external dependency graph
 By '*major*' we mean a dependency which provides most of the functionality for a feature.
 
-By '*external*' we mean a dependency whose design evolution is self-governing and separated from `XlsxCommand` CmdLet.
+By '*external*' we mean a dependency whose design evolution is self-governing and separated from `XlsxCommand` cmdlet.
 ```
                                            XlsxCommand
                                             |       |
@@ -24,12 +24,12 @@ By '*external*' we mean a dependency whose design evolution is self-governing an
                                             V       V                 V
                                     DocumentFormat.OpenXml       IllyumL2T.Core
 ```
-### Export-WorksheetXlsx CmdLet external dependencies
+### Export-WorksheetXlsx Cmdlet external dependencies
 `Export-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetWriter](https://www.nuget.org/packages/ExcelXLSXWorksheetWriter/) for individual two-dimensional tabular grid and a set of two-dimensional tabular grids abstrations.
 
 `Export-WorksheetXlsx` transitively depends on [DocumentFormat.OpenXml](https://www.nuget.org/packages/DocumentFormat.OpenXml/) for Microsoft Office Open XML Spreadsheet document format processing.
 
-### Import-WorksheetXlsx CmdLet external dependencies
+### Import-WorksheetXlsx Cmdlet external dependencies
 `Import-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetReader](https://www.nuget.org/packages/ExcelXLSXWorksheetReader/) for individual two-dimensional tabular grid, a set of two-dimensional tabular grids, and LINQ-to-XLSX abstrations.
 
 `Import-WorksheetXlsx` transitively depends on [IllyumL2T.Core](https://www.nuget.org/packages/IllyumL2T.Core/) for cell value/field parsing in LINQ-to-XLSX processing.
@@ -38,18 +38,18 @@ By '*external*' we mean a dependency whose design evolution is self-governing an
 
 ## Installation
 ### Installation prerequisites
-The `XlsxCommand` module has been tested (installation and included CmdLets) on the following runtime environment:
+The `XlsxCommand` module has been tested (installation and included cmdlets) on the following runtime environment:
 1. [PowerShell 7.6.0](https://github.com/PowerShell/PowerShell/releases/tag/v7.6.0)
 2. [PowerShellGet 2.2.5](https://learn.microsoft.com/en-us/powershell/module/powershellget/?view=powershellget-2.x)
 
 ### Installation process
-The installation process includes a location for the `XlsxCommand` module. Such location is determined by the `Scope` parameter of the `Install-Module` CmdLet. The accessibility of the installed module is also determined by the value of that `Scope` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
+The installation process includes a location for the `XlsxCommand` module. Such location is determined by the `Scope` parameter of the `Install-Module` Cmdlet. The accessibility of the installed module is also determined by the value of that `Scope` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
 As the default value for the `Scope` parameter varies, checking  the related documentation is in order: [Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
 ```
 Install-Module -Name XlsxCommand
 ```
 
-## Syntax of included CmdLets
+## Syntax of included cmdlets
 ### Export-WorksheetXlsx syntax
 ```
 Export-WorksheetXlsx [-DestinationExcelXLSXFilePath] <string>
