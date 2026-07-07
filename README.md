@@ -338,7 +338,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3 -Schema [ProcessView]
   748 Process6 
 ```
 
-### 14. Read data rows of cells as instances of a PowerShell class from an Excel Worksheet tab.
+### 14. Attempt to read cell data as the wrong property numeric type using instances of a PowerShell class.
 This example attempts to read a cell value (`45.62`) and to parse it as an integer for a class property (`$CPU`) and shows the warning message of the corresponding parse failure. For that, this example ignores the header row and reads the third data row of the first Worksheet in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline for such third data row.
 ```
 Import-Module XlsxCommand
