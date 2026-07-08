@@ -384,3 +384,23 @@ WARNING: CPU: Unparsable System.Int32 >>> 45.62
   -- ----     ---
 6864 Process3   0
 ```
+
+### 16. Read Excel dates, represented as numeric values, in data rows as .NET DateTime property values from a Worksheet tab.
+This example reads from the first Worksheet in an Excel Workbook (XLSX) file named `LogFile.xlsx`. Such file was created at Excel Online service with the ‘Blank workbook’ template. The first Worksheet contains two columns with a header row. The second column was filled with simple date values typed as <month-number> <dash> <day-number>:
+```
+Import-Module XlsxCommand
+
+class LogRecord
+{
+    [string]$LogName
+    [DateTime]$LogDate
+}
+
+Import-WorksheetXlsx C:\logs\LogFile.xlsx -Schema [LogRecord]
+
+LogName   LogDate
+-------   -------
+NameLog1  7/1/2026 12:00:00 AM
+NameLog2  7/6/2026 12:00:00 AM
+NameLog3  7/8/2026 12:00:00 AM
+```
