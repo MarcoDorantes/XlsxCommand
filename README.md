@@ -386,7 +386,7 @@ WARNING: CPU: Unparsable System.Int32 >>> 45.62
 ```
 
 ### 16. Read Excel dates, represented as numeric values, in data rows as .NET DateTime property values from a Worksheet tab.
-This example reads from the first Worksheet in an Excel Workbook (XLSX) file named `LogFile.xlsx`. Such file was created at Excel Online service with the *Blank workbook* template. The first Worksheet contains two columns with a header row. The second column was filled with simple date values typed as *\<month-number\> \<dash\> \<day-number\>*:
+This example reads from the first Worksheet in an Excel Workbook (XLSX) file named `LogFile.xlsx`. Such file was created at Excel Online service with the *Blank workbook* template. The first Worksheet contains two columns with a header row. The second column was filled with simple date values typed as *\<month-number\>\<dash\>\<day-number\>*:
 
 **Without explicit data type specification:**
 ```
@@ -418,4 +418,24 @@ LogName   LogDate
 NameLog1  7/1/2026 12:00:00 AM
 NameLog2  7/6/2026 12:00:00 AM
 NameLog3  7/8/2026 12:00:00 AM
+```
+
+### 17. Skip parsing the marked columns and read data rows of cells as instances of a PowerShell class from an Excel Worksheet tab.
+This example skips the columns corresponding to the properties marked with the .NET CLR attribute `System.ComponentModel.DataAnnotations.Schema.NotMapped`, ignores the header row, and reads the first three data rows of the first Worksheet in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row:
+```
+Import-Module XlsxCommand
+
+class ProcessView
+{
+    [System.ComponentModel.DataAnnotations.Schema.NotMapped()]$IdIgnored
+    [string]$Name
+}
+
+Import-WorksheetXlsx C:\config\Processes.xlsx -First 3 -Schema [ProcessView]
+
+IdIgnored Name
+--------- ----
+          Process1
+          Process2
+          Process3
 ```
