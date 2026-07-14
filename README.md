@@ -42,11 +42,20 @@ The `XlsxCommand` module has been tested (installation and included cmdlets) on 
 1. [PowerShell 7.6.0](https://github.com/PowerShell/PowerShell/releases/tag/v7.6.0)
 2. [PowerShellGet 2.2.5](https://learn.microsoft.com/en-us/powershell/module/powershellget/?view=powershellget-2.x)
 
-### Installation process
+### Installation location and scope
 The installation process includes a location for the `XlsxCommand` module. Such location is determined by the `Scope` parameter of the `Install-Module` Cmdlet. The accessibility of the installed module is also determined by the value of that `Scope` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
 As the default value for the `Scope` parameter varies, checking  the related documentation is in order: [Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
+
+### Installation process of the latest version for the first time
+The following command does not require administrative permissions on the local machine. The use of its default parameter values may prompt for a confirmation as stated in the related documentation: [Install-Module description](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module?view=powershellget-2.x#description)
 ```
 Install-Module -Name XlsxCommand
+```
+
+### Installation process to upgrade to the latest version
+The following command does not require administrative permissions on the local machine:
+```
+Install-Module -Name XlsxCommand -Force
 ```
 
 ## Syntax of included cmdlets
@@ -439,3 +448,6 @@ IdIgnored Name
           Process2
           Process3
 ```
+
+### 18. Check .
+This example
