@@ -29,7 +29,7 @@ By '*external*' we mean a dependency whose design evolution is self-governing an
                                       V         V       V            V
                                     DocumentFormat.OpenXml       IllyumL2T.Core
 ```
-`XlsxCommand` directly depends on [ExcelXLSXWorksheetValidator](https://www.nuget.org/packages/ExcelXLSXWorksheetValidator/) for rule checking of Open XML SDK Validator.
+`XlsxCommand` directly depends on [ExcelXLSXWorksheetValidator](https://www.nuget.org/packages/ExcelXLSXWorksheetValidator/) for the rule checking of Open XML SDK Validator in [DocumentFormat.OpenXml](https://www.nuget.org/packages/DocumentFormat.OpenXml/) for Microsoft Office Open XML Spreadsheet document format processing.
 
 ### Export-WorksheetXlsx Cmdlet external dependencies
 `Export-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetWriter](https://www.nuget.org/packages/ExcelXLSXWorksheetWriter/) for individual two-dimensional tabular grid and a set of two-dimensional tabular grids abstrations.
