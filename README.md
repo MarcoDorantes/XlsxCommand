@@ -72,6 +72,7 @@ Export-WorksheetXlsx [-DestinationExcelXLSXFilePath] <string>
     [-InputObject <psobject>]
     [-InputHashtable <OrderedHashtable>]
     [-Group <Object[]>]
+    [-Tabular <Object[]>]
     [-DataType {String | Number | Date | Time}]
     [-Align {Left | Center | Right}]
     [-DataTypeMap <OrderedHashtable>]
