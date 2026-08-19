@@ -73,7 +73,7 @@ Export-WorksheetXlsx [-DestinationExcelXLSXFilePath] <string>
     [-InputHashtable <OrderedHashtable>]
     [-Group <Object[]>]
     [-Tabular <Object[]>]
-    [-DataType {String | Number | Date | Time}]
+    [-DataType {String | Number | Date | Time | Boolean}]
     [-Align {Left | Center | Right}]
     [-DataTypeMap <OrderedHashtable>]
     [-AlignMap <OrderedHashtable>]
