@@ -49,6 +49,10 @@ The `XlsxCommand` module has been tested (installation and included cmdlets) on 
 1. [PowerShell 7.6.0](https://github.com/PowerShell/PowerShell/releases/tag/v7.6.0)
 2. [PowerShellGet 2.2.5](https://learn.microsoft.com/en-us/powershell/module/powershellget/?view=powershellget-2.x)
 
+The following PowerShell variable and command display data to see if the minimum required versions are already present:
+1. For PowerShell version: `$PSVersionTable.PSVersion`
+2. For PowerShellGet version: `Get-Module -ListAvailable | ? Name -eq PowerShellGet | ft Name,Version`
+
 ### Installation location and scope
 The installation process includes a location for the `XlsxCommand` module. Such location is determined by the `Scope` parameter of the `Install-Module` Cmdlet. The accessibility of the installed module is also determined by the value of that `Scope` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
 As the default value for the `Scope` parameter varies, checking  the related documentation is in order: [Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
@@ -219,7 +223,7 @@ class ServiceView
 $serviceByStatus = Get-Service | %{ [ServiceView]::new($_) } | group Status;
 $processes = Get-Process | Select-Object -First 6 | %{ [ProcessView]::new($_) }
 
-$processes | Export-WorksheetXlsx C:\config\Processes.xlsx -Group $serviceByStatus
+$processes | Export-WorksheetXlsx Processes.xlsx -Group $serviceByStatus
 ```
 
 ### 7. Create an Excel XLSX Worksheet with cells of Excel Date data type using a PowerShell class.
