@@ -7,7 +7,7 @@ The cell data processing of both included cmdlets are based on a strict two-dime
 
 An Excel Worksheet tab is a two-dimensional **spread** array, not a strict tabular structure. Hence, the included cmdlets only work best if the cells of each Worksheet tab in an Excel Workbook are organized as a ‘*table*’.
 
-Like the [PowerShell `Import-Csv` Cmdlet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv#notes), the header row determines the number of columns and the column names. The column names are also the names of the properties of the output objects added to the PowerShell Pipeline. The header row is interpreted to be the column headers, unless you use the `Header` parameter to specify column headers. If any row has more values than the header row, the additional values are ignored. On the other hand, if the `Schema` parameter is used, then the names of the properties of the output objects added to the PowerShell Pipeline are determined by the provided type.
+For the case of `Import-WorksheetXlsx`, like the [PowerShell `Import-Csv` Cmdlet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv#notes), the header row determines the number of columns and the column names. The column names are also the names of the properties of the output objects added to the PowerShell Pipeline. The header row is interpreted to be the column headers, unless you use the `Header` parameter to specify column headers. If any row has more values than the header row, the additional values are ignored. On the other hand, if the `Schema` parameter is used, then the names of the properties of the output objects added to the PowerShell Pipeline are determined by the provided type.
 
 ## Directed acyclic graph (DAG) of major external dependencies
 By '*major*' we mean a dependency which provides most of the functionality for a feature.
@@ -29,10 +29,10 @@ By '*external*' we mean a dependency whose design evolution is self-governing an
                                       V         V       V            V
                                     DocumentFormat.OpenXml       IllyumL2T.Core
 ```
-`XlsxCommand` directly depends on [ExcelXLSXWorksheetValidator](https://www.nuget.org/packages/ExcelXLSXWorksheetValidator/) for the rule checking of Open XML SDK Validator in [DocumentFormat.OpenXml](https://www.nuget.org/packages/DocumentFormat.OpenXml/) for Microsoft Office Open XML Spreadsheet document format processing.
+`XlsxCommand` directly depends on [ExcelXLSXWorksheetValidator](https://www.nuget.org/packages/ExcelXLSXWorksheetValidator/) for the rule checking of the Open XML SDK Validator in [DocumentFormat.OpenXml](https://www.nuget.org/packages/DocumentFormat.OpenXml/). Such component checks the rules related to Microsoft Office Open XML Spreadsheet document format.
 
 ### Export-WorksheetXlsx Cmdlet external dependencies
-`Export-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetWriter](https://www.nuget.org/packages/ExcelXLSXWorksheetWriter/) for individual two-dimensional tabular grid and a set of two-dimensional tabular grids abstrations.
+`Export-WorksheetXlsx` directly depends on [ExcelXLSXWorksheetWriter](https://www.nuget.org/packages/ExcelXLSXWorksheetWriter/) for both abstrations: individual two-dimensional tabular grid, and a set of two-dimensional tabular grids.
 
 `Export-WorksheetXlsx` transitively depends on [DocumentFormat.OpenXml](https://www.nuget.org/packages/DocumentFormat.OpenXml/) for Microsoft Office Open XML Spreadsheet document format processing.
 
