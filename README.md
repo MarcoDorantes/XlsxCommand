@@ -152,7 +152,7 @@ Export-WorksheetXlsx $home\Documents\ServicesByStatus.xlsx -Group $tabs
 ```
 
 ### 5. Create an Excel XLSX Worksheet with multiple tabs.
-This example writes the same values and tabs as the example #3 plus the example #4, and also specifies the cell data type and cell horizontal alignment for the corresponding data cells by property name:
+This example writes the same values and tabs as the [example #3](#3-create-an-excel-workbook-xlsx-of-one-worksheet-tab-with-given-cell-formatting-by-property-name) plus the example #4, and also specifies the cell data type and cell horizontal alignment for the corresponding data cells by property name:
 ```
 Import-Module XlsxCommand
 
