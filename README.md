@@ -229,7 +229,7 @@ $processes | Export-WorksheetXlsx Processes.xlsx -Group $serviceByStatus
 ```
 
 ### 7. Create an Excel XLSX Worksheet with cells of Excel Date data type using a PowerShell class.
-This example writes the values of the Name, and LastWriteTime properties of found PDF files into a new Excel Workbook (XLSX) file at the given path. The cells in the column related to the `Modified` class property are written as values of Excel `Date` data type:
+This example writes the values of the `Name`, and `LastWriteTime` properties of found PDF files into a new Excel Workbook (XLSX) file at the given path. The cells in the column related to the `Modified` class property are written as values of Excel `Date` data type:
 
 ```
 Import-Module XlsxCommand
