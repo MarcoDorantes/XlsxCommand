@@ -172,7 +172,7 @@ $processes | Export-WorksheetXlsx C:\config\Processes.xlsx `
 ```
 
 ### 6. Create an Excel XLSX Worksheet with multiple tabs using PowerShell classes.
-*Note*: See example #8 for another, a bit simpler, way to achieve the same as this example (given the latest `XlsxCommand` version is installed and loaded).
+*Note*: See [example #8](#8-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes) for another, a bit simpler, way to achieve the same as this example (given the latest `XlsxCommand` version is installed and loaded).
 
 This example writes the same values and tabs as the [example #5](#5-create-an-excel-xlsx-worksheet-with-multiple-tabs), and also specifies the cell data type and cell horizontal alignment for the data cells by .NET CLR attributes in the corresponding properties of PowerShell classes:
 ```
@@ -305,7 +305,7 @@ $processes | Export-WorksheetXlsx Processes.xlsx -Group $serviceByStatus
 
 ## Import-WorksheetXlsx usage examples
 ### 9. Read all existing tab names from an Excel Workbook (XLSX), not just Worksheet tabs.
-This example reads all Worksheet tab names found in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds an instance of `System.String` to the PowerShell Pipeline per tab name:
+This example reads all Worksheet tab names found in the Excel Workbook (XLSX) created in [example #5](#5-create-an-excel-xlsx-worksheet-with-multiple-tabs), or in [example #6](#6-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes), and adds an instance of `System.String` to the PowerShell Pipeline per tab name:
 ```
 Import-Module XlsxCommand
 
@@ -317,7 +317,7 @@ Running
 ```
 
 ### 10. Read first existing tab from an Excel XLSX Worksheet.
-This example reads the header row and the first three data rows from the first Worksheet tab (by default if `TabName` parameter is not specified) in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per data row (the values of the properties are string representations of the cells in the row):
+This example reads the header row and the first three data rows from the first Worksheet tab (by default if `TabName` parameter is not specified) in the Excel Workbook (XLSX) created in [example #5](#5-create-an-excel-xlsx-worksheet-with-multiple-tabs), or in [example #6](#6-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes), and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per data row (the values of the properties are string representations of the cells in the row):
 ```
 Import-Module XlsxCommand
 
@@ -331,7 +331,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -First 3
 ```
 
 ### 11. Read an existing tab by name from an Excel XLSX Worksheet.
-This example reads the header row and the next three data rows from the Worksheet tab named '**Stopped**' in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per data row (the values of the properties are string representations of the cells in the row):
+This example reads the header row and the next three data rows from the Worksheet tab named '**Stopped**' in the Excel Workbook (XLSX) created in [example #5](#5-create-an-excel-xlsx-worksheet-with-multiple-tabs), or in [example #6](#6-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes), and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per data row (the values of the properties are string representations of the cells in the row):
 ```
 Import-Module XlsxCommand
 
@@ -345,7 +345,7 @@ Tabular Writer Service   Win32OwnProcess   Stopped
 ```
 
 ### 12. Read data rows of cells with some null values from an Excel Worksheet tab.
-This example reads the header row and the last three data rows from the first Worksheet tab (by default if `TabName` parameter is not specified) in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per data row. The values of the properties are string representations of each cell value in the row; in this example, some of those string values are `null` (see values of the `CPU` property):
+This example reads the header row and the last three data rows from the first Worksheet tab (by default if `TabName` parameter is not specified) in the Excel Workbook (XLSX) created in [example #5](#5-create-an-excel-xlsx-worksheet-with-multiple-tabs), or in [example #6](#6-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes), and adds one instance of `System.Management.Automation.PSCustomObject` to the PowerShell Pipeline per data row. The values of the properties are string representations of each cell value in the row; in this example, some of those string values are `null` (see values of the `CPU` property):
 ```
 Import-Module XlsxCommand
 
@@ -359,7 +359,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3
 ```
 
 ### 13. Read data rows of cells as instances of a PowerShell class from an Excel Worksheet tab.
-This example ignores the header row and reads the first three data rows of the first Worksheet in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For the case of integer representations without separation characters for thousands, the values are parsed directly (see the `$ProcessID` property declaration):
+This example ignores the header row and reads the first three data rows of the first Worksheet in the Excel Workbook (XLSX) created in [example #5](#5-create-an-excel-xlsx-worksheet-with-multiple-tabs), or in [example #6](#6-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes), and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For the case of integer representations without separation characters for thousands, the values are parsed directly (see the `$ProcessID` property declaration):
 ```
 Import-Module XlsxCommand
 
@@ -379,7 +379,7 @@ ProcessID ProcessName
 ```
 
 ### 14. Read cell values of a data row as numeric from an Excel Worksheet tab.
-This example ignores the header row and reads the last three data rows of the first Worksheet in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of floating-point numeric (`double`, *whose default value is zero*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires a custom .NET CLR attribute as shown:
+This example ignores the header row and reads the last three data rows of the first Worksheet in the Excel Workbook (XLSX) created in [example #5](#5-create-an-excel-xlsx-worksheet-with-multiple-tabs), or in [example #6](#6-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes), and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of floating-point numeric (`double`, *whose default value is zero*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires a custom .NET CLR attribute as shown:
 ```
 $ProcessViewSource = @'
 public class ProcessView
@@ -409,7 +409,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3 -Schema [ProcessView]
 ```
 
 ### 15. Read cell values of a data row as nullable numeric from an Excel Worksheet tab.
-This example ignores the header row and reads the last three data rows of the first Worksheet in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of ***nullable*** floating-point numeric (`System.Nullable<double>`, *whose default value is null*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires a custom .NET CLR attribute as shown:
+This example ignores the header row and reads the last three data rows of the first Worksheet in the Excel Workbook (XLSX) created in [example #5](#5-create-an-excel-xlsx-worksheet-with-multiple-tabs), or in [example #6](#6-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes), and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row. The values of the properties are parsed from the corresponding values of each cell in the row by position into the corresponding property type. For this case of ***nullable*** floating-point numeric (`System.Nullable<double>`, *whose default value is null*) representations, the parsing process (see [Illyum/l2t](https://github.com/Illyum/l2t)) of the property values requires a custom .NET CLR attribute as shown:
 ```
 $ProcessViewSource = @'
 public class ProcessView
@@ -439,7 +439,7 @@ Import-WorksheetXlsx C:\config\Processes.xlsx -Last 3 -Schema [ProcessView]
 ```
 
 ### 16. Attempt to read cell data as the wrong property numeric type using a PowerShell class.
-This example attempts to read a cell value (`45.62`) and to parse it as an integer for a class property (`$CPU`) and shows the warning message of the corresponding parse failure. For that, this example ignores the header row and reads the third data row of the first Worksheet in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline for such third data row.
+This example attempts to read a cell value (`45.62`) and to parse it as an integer for a class property (`$CPU`) and shows the warning message of the corresponding parse failure. For that, this example ignores the header row and reads the third data row of the first Worksheet in the Excel Workbook (XLSX) created in [example #5](#5-create-an-excel-xlsx-worksheet-with-multiple-tabs), or in [example #6](#6-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes), and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline for such third data row.
 ```
 Import-Module XlsxCommand
 
@@ -495,7 +495,7 @@ NameLog3  7/8/2026 12:00:00 AM
 ```
 
 ### 18. Skip parsing the marked columns and read data rows of cells as instances of a PowerShell class from an Excel Worksheet tab.
-This example skips the columns corresponding to the properties marked with the .NET CLR attribute `System.ComponentModel.DataAnnotations.Schema.NotMapped`, ignores the header row, and reads the first three data rows of the first Worksheet in the Excel Workbook (XLSX) created in example #5, or in example #6, and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row:
+This example skips the columns corresponding to the properties marked with the .NET CLR attribute `System.ComponentModel.DataAnnotations.Schema.NotMapped`, ignores the header row, and reads the first three data rows of the first Worksheet in the Excel Workbook (XLSX) created in [example #5](#5-create-an-excel-xlsx-worksheet-with-multiple-tabs), or in [example #6](#6-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes), and adds one instance of a PowerShell class (which is a .NET reference type) to the PowerShell Pipeline per data row:
 ```
 Import-Module XlsxCommand
 
