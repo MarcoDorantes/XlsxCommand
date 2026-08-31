@@ -70,7 +70,7 @@ Install-Module -Name XlsxCommand -Force
 ```
 
 ### Uninstall a previous version
-The following command searches for a specific version of `XlsxCommand` module in the local machine. If found, then displays what would it looks like to execute the uninstallation of such specific version.
+The following command searches for a specific version of `XlsxCommand` module in the local machine. If found, then displays what would look like if you were to run the uninstallation of such specific version.
 ```
 Get-InstalledModule XlsxCommand -RequiredVersion 4.4.0 | Uninstall-Module -WhatIf
 ```
