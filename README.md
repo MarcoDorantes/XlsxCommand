@@ -69,6 +69,17 @@ The following command does not require administrative permissions on the local m
 Install-Module -Name XlsxCommand -Force
 ```
 
+### Uninstall a previous version
+The following command searches for a specific version of `XlsxCommand` module in the local machine. If found, then displays what would it looks to execute the uninstallation of such specific version.
+```
+Get-InstalledModule XlsxCommand -RequiredVersion 4.4.0 | Uninstall-Module -WhatIf
+```
+
+The following command searches for a specific version of `XlsxCommand` module in the local machine. If found, then asks for confirmation to execute the uninstallation of such specific version.
+```
+Get-InstalledModule XlsxCommand -RequiredVersion 4.4.0 | Uninstall-Module -Confirm
+```
+
 ## Syntax of included cmdlets
 ### Export-WorksheetXlsx syntax
 ```
