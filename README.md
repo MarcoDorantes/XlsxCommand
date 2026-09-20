@@ -100,6 +100,7 @@ Export-WorksheetXlsx [-DestinationExcelXLSXFilePath] <string>
 ```
 Import-WorksheetXlsx [-ExcelXLSXFilePath] <string>
     -TabNames
+    -SkipExcelValidator
     [<CommonParameters>]
     
 
@@ -112,6 +113,7 @@ Import-WorksheetXlsx [-ExcelXLSXFilePath] <string>
     [-Skip <int>]
     [-Schema <PSTypeName>]
     [-SkipExcelValidator]
+    [-UseDefaultNameForUnspecifiedHeader]
     [<CommonParameters>]
 ```
 
