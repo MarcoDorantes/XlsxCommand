@@ -3,11 +3,16 @@
 ## Summary
 `XlsxCommand` is a PowerShell 7 Module with the following cmdlets: (1) `Export-WorksheetXlsx` to create Excel Worksheet tabs and store them as files in Excel Workbook format (XLSX), and (2) `Import-WorksheetXlsx` to read Excel Worksheet tabs from files in Excel Workbook format (XLSX).
 
-The cell data processing of both included cmdlets are based on a strict two-dimensional tabular data structure with rows and columns, i.e., a ‘*table*’. The first row is the header row. The next rows are data rows.
+The cell data processing of both included cmdlets are based on a strict two-dimensional single tabular data structure with rows and columns, i.e., a ‘*table*’, per Excel Worksheet. The first row is the header row. The next rows are data rows.
 
-An Excel Worksheet tab is a two-dimensional **spread** array, not a strict tabular structure. Hence, the included cmdlets only work best if the cells of each Worksheet tab in an Excel Workbook are organized as a ‘*table*’.
+An Excel Worksheet tab is a two-dimensional **spread** array, not a strict single tabular structure.
 
-For the case of `Import-WorksheetXlsx`, like the [PowerShell `Import-Csv` Cmdlet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv#notes), the header row determines the number of columns and the column names. The column names are also the names of the properties of the output objects added to the PowerShell Pipeline. The header row is interpreted to be the column headers, unless you use the `Header` parameter to specify column headers. If any row has more values than the header row, the additional values are ignored. On the other hand, if the `Schema` parameter is used, then the names of the properties of the output objects added to the PowerShell Pipeline are determined by the provided type.
+Hence, the included cmdlets only work best if the cells of each Worksheet tab in an Excel Workbook are organized as a single ‘*table*’. See the section below: The idea of a single ‘*table*’ per Worksheet tab.
+
+For the case of `Import-WorksheetXlsx`, like the [PowerShell `Import-Csv` Cmdlet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv#notes), the header row determines the number of columns and the column names. The column names are also the names of the properties of the output objects added to the PowerShell Pipeline. The header row is interpreted to be the column headers, unless you use the `Header` parameter to specify column headers. If any row has more values than the header row, the additional values are ignored. On the other hand, if the `Schema` parameter is used, then the names of the properties of the output objects added to the PowerShell Pipeline are determined by the provided type. In any case, all rows found in an XLSX file are processed as data rows each time a non-null value is specified for the `Header` parameter.
+
+## The idea of a single ‘*table*’ per Worksheet tab
+For `XlsxCommand`, the idea of a ‘*table*’ is just a choice made by you to organize your related data in Excel Worksheet cells as rows and columns. One ‘*table*’ per Excel Worksheet tab. This choice is not directly related to any features from Microsoft Excel where an explicit Excel Table is used. For example, the feature by which you are able to have as many Excel Tables as you like in the same Worksheet tab (see [Overview of Excel tables](https://support.microsoft.com/en-us/excel/overview-of-excel-tables)). Those other uses of the same word ‘*table*’ are not directly related to the idea of a single ‘*table*’ per Worksheet tab here.
 
 ## Directed acyclic graph (DAG) of major external dependencies
 By '*major*' we mean a dependency which provides most of the functionality for a feature.
