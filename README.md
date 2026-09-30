@@ -1,7 +1,46 @@
 # XlsxCommand
 
+## Table of Contents
+
+- [XlsxCommand](#xlsxcommand)
+    - [Summary](#summary)
+    - [The idea of a single table per worksheet tab](#the-idea-of-a-single-table-per-worksheet-tab)
+    - [Directed acyclic graph dag of major external dependencies](#directed-acyclic-graph-dag-of-major-external-dependencies)
+        - [Export worksheetxlsx cmdlet external dependencies](#export-worksheetxlsx-cmdlet-external-dependencies)
+        - [Import worksheetxlsx cmdlet external dependencies](#import-worksheetxlsx-cmdlet-external-dependencies)
+    - [Installation](#installation)
+        - [Installation prerequisites](#installation-prerequisites)
+        - [Installation location and scope](#installation-location-and-scope)
+        - [Installation process of the latest version for the first time](#installation-process-of-the-latest-version-for-the-first-time)
+        - [Installation process to upgrade to the latest version](#installation-process-to-upgrade-to-the-latest-version)
+        - [Uninstall a previous version](#uninstall-a-previous-version)
+    - [Syntax of included cmdlets](#syntax-of-included-cmdlets)
+        - [Export worksheetxlsx syntax](#export-worksheetxlsx-syntax)
+        - [Import worksheetxlsx syntax](#import-worksheetxlsx-syntax)
+    - [Export worksheetxlsx usage examples](#export-worksheetxlsx-usage-examples)
+        - [1. Create an excel workbook xlsx of one worksheet tab with default cell formats](#1-create-an-excel-workbook-xlsx-of-one-worksheet-tab-with-default-cell-formats)
+        - [2. Create an excel workbook xlsx of one worksheet tab with given cell formatting by column relative position](#2-create-an-excel-workbook-xlsx-of-one-worksheet-tab-with-given-cell-formatting-by-column-relative-position)
+        - [3. Create an excel workbook xlsx of one worksheet tab with given cell formatting by property name](#3-create-an-excel-workbook-xlsx-of-one-worksheet-tab-with-given-cell-formatting-by-property-name)
+        - [4. Create an excel workbook xlsx with multiple worksheet tabs by group](#4-create-an-excel-workbook-xlsx-with-multiple-worksheet-tabs-by-group)
+        - [5. Create an excel xlsx worksheet with multiple tabs](#5-create-an-excel-xlsx-worksheet-with-multiple-tabs)
+        - [6. Create an excel xlsx worksheet with multiple tabs using powershell classes](#6-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes)
+        - [7. Create an excel xlsx worksheet with cells of excel date data type using a powershell class](#7-create-an-excel-xlsx-worksheet-with-cells-of-excel-date-data-type-using-a-powershell-class)
+        - [8. Create an excel xlsx worksheet with multiple tabs using powershell classes](#8-create-an-excel-xlsx-worksheet-with-multiple-tabs-using-powershell-classes)
+        - [9. Create an excel xlsx worksheet with cells of excel date data type using a powershell class](#9-create-an-excel-xlsx-worksheet-with-cells-of-excel-date-data-type-using-a-powershell-class)
+    - [Import worksheetxlsx usage examples](#import-worksheetxlsx-usage-examples)
+        - [10. Read all existing tab names from an excel workbook xlsx not just worksheet tabs](#10-read-all-existing-tab-names-from-an-excel-workbook-xlsx-not-just-worksheet-tabs)
+        - [11. Read first existing tab from an excel xlsx worksheet](#11-read-first-existing-tab-from-an-excel-xlsx-worksheet)
+        - [12. Read an existing tab by name from an excel xlsx worksheet](#12-read-an-existing-tab-by-name-from-an-excel-xlsx-worksheet)
+        - [13. Read data rows of cells with some null values from an excel worksheet tab](#13-read-data-rows-of-cells-with-some-null-values-from-an-excel-worksheet-tab)
+        - [14. Read data rows of cells as instances of a powershell class from an excel worksheet tab](#14-read-data-rows-of-cells-as-instances-of-a-powershell-class-from-an-excel-worksheet-tab)
+        - [15. Read cell values of a data row as numeric from an excel worksheet tab](#15-read-cell-values-of-a-data-row-as-numeric-from-an-excel-worksheet-tab)
+        - [16. Read cell values of a data row as nullable numeric from an excel worksheet tab](#16-read-cell-values-of-a-data-row-as-nullable-numeric-from-an-excel-worksheet-tab)
+        - [17. Attempt to read cell data as the wrong property numeric type using a powershell class](#17-attempt-to-read-cell-data-as-the-wrong-property-numeric-type-using-a-powershell-class)
+        - [18. Read excel dates represented as numeric values in data rows as net datetime property values from a worksheet tab](#18-read-excel-dates-represented-as-numeric-values-in-data-rows-as-net-datetime-property-values-from-a-worksheet-tab)
+        - [19. Skip parsing the marked columns and read data rows of cells as instances of a powershell class from an excel worksheet tab](#19-skip-parsing-the-marked-columns-and-read-data-rows-of-cells-as-instances-of-a-powershell-class-from-an-excel-worksheet-tab)
+
 ## Summary
-`XlsxCommand` is a PowerShell 7 Module with the following cmdlets: (1) `Export-WorksheetXlsx` to create Excel Worksheet tabs and store them as files in Excel Workbook format (XLSX), and (2) `Import-WorksheetXlsx` to read Excel Worksheet tabs from files in Excel Workbook format (XLSX).
+`XlsxCommand` is a PowerShell 7 Binary Module with the following cmdlets: (1) `Export-WorksheetXlsx` to create Excel Worksheet tabs and store them as files in Excel Workbook format (XLSX), and (2) `Import-WorksheetXlsx` to read Excel Worksheet tabs from files in Excel Workbook format (XLSX).
 
 The cell data processing of both included cmdlets are based on a strict two-dimensional single tabular data structure with rows and columns, i.e., a ‘*table*’, per Excel Worksheet. The first row is the header row. The next rows are data rows.
 
@@ -9,7 +48,7 @@ An Excel Worksheet tab is a two-dimensional **spread** array, not a strict singl
 
 Hence, the included cmdlets only work best if the cells of each Worksheet tab in an Excel Workbook are organized as a single ‘*table*’. See the section [The idea of a single ‘*table*’ per Worksheet tab](#the-idea-of-a-single-table-per-worksheet-tab) below.
 
-For the case of `Import-WorksheetXlsx`, like the [PowerShell `Import-Csv` Cmdlet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv#notes), the header row determines the number of columns and the column names. The column names are also the names of the properties of the output objects added to the PowerShell Pipeline. The header row is interpreted to be the column headers, unless you use the `Header` parameter to specify column headers. If any row has more values than the header row, the additional values are ignored. On the other hand, if the `Schema` parameter is used, then the names of the properties of the output objects added to the PowerShell Pipeline are determined by the provided type. In any case, all rows found in a Worksheet tab are processed as data rows if a non-null value is specified for the `Header` parameter.
+For the case of `Import-WorksheetXlsx`, like the [PowerShell `Import-Csv` Cmdlet](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/import-csv#notes), the header row determines the number of columns and the column names. The column names are also the names of the properties of the output objects added to the PowerShell Pipeline. The header row is interpreted to be the column headers, unless you use the `Header` parameter to specify column headers. If any row has more values than the header row, the additional values are ignored. On the other hand, if the `Schema` parameter is used, then the names and order of the properties of the output objects added to the PowerShell Pipeline are determined by the provided type. In any case, all rows found in a Worksheet tab are processed as data rows if a non-null value is specified for the `Header` parameter.
 
 ## The idea of a single ‘*table*’ per Worksheet tab
 For `XlsxCommand`, the idea of a ‘*table*’ is just a choice made by you to organize your related data in Excel Worksheet cells as rows and columns. One ‘*table*’ per Excel Worksheet tab. This choice is not directly related to any feature by Microsoft Excel where an explicit Excel Table is used. For example, the feature by which you are able to have as many Excel Tables as you like in the same Worksheet tab (see [Overview of Excel tables](https://support.microsoft.com/en-us/excel/overview-of-excel-tables)). Those other uses of the same word ‘*table*’ are not directly related to the idea of a single ‘*table*’ per Worksheet tab here.
