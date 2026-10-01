@@ -98,7 +98,7 @@ The following PowerShell variable and command display data to see if the minimum
 2. For PowerShellGet version: `Get-Module -ListAvailable | ? Name -eq PowerShellGet | ft Name,Version`
 
 ### Installation location and scope
-The installation process includes a location for the `XlsxCommand` module. Such location is determined by the `Scope` parameter of the `Install-Module` Cmdlet. The accessibility of the installed module is also determined by the value of that `Scope` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
+The installation process includes a location for the `XlsxCommand` module. Such location is determined by the `Scope` parameter of the `Install-Module` cmdlet. The accessibility of the installed module is also determined by the value of that `Scope` parameter (accessible to all users of the computer or accessible only to the current user of the computer).
 As the default value for the `Scope` parameter varies, checking  the related documentation is in order: [Install-Module -Scope parameter](https://learn.microsoft.com/en-us/powershell/module/powershellget/install-module#-scope)
 
 ### Installation process of the latest version for the first time
@@ -544,7 +544,7 @@ WARNING: CPU: Unparsable System.Int32 >>> 45.62
 ```
 
 ### 18. Read Excel dates, represented as numeric values, in data rows as .NET DateTime property values from a Worksheet tab.
-This example reads from the first Worksheet in an Excel Workbook (XLSX) file named `LogFile.xlsx`. Such file was created at Excel Online service with the *Blank workbook* template. The first Worksheet contains two columns with a header row. The second column was filled with simple date values typed as *\<month-number\>\<dash\>\<day-number\>*:
+This example reads from the first Worksheet in an Excel Workbook (XLSX) file named `LogFile.xlsx`. Such file was created at Excel Online service with the *Blank workbook* template and the language-regional setting value **en-us**. The first Worksheet contains two columns with a header row. The second column was filled with simple date values typed as *\<month-number\>\<dash\>\<day-number\>*:
 
 **Without explicit data type specification:**
 ```
