@@ -13,7 +13,7 @@
         - [Installation location and scope](#installation-location-and-scope)
         - [Installation process of the latest version for the first time](#installation-process-of-the-latest-version-for-the-first-time)
         - [Installation process to upgrade to the latest version](#installation-process-to-upgrade-to-the-latest-version)
-        - [Uninstall a previous version](#uninstall-a-previous-version)
+        - [Uninstall a previously installed version](#uninstall-a-previous-version)
     - [Syntax of included cmdlets](#syntax-of-included-cmdlets)
         - [Export-WorksheetXlsx syntax](#export-worksheetxlsx-syntax)
         - [Import-WorksheetXlsx syntax](#import-worksheetxlsx-syntax)
@@ -113,7 +113,7 @@ The following command does not require administrative permissions on the local m
 Install-Module -Name XlsxCommand -Force
 ```
 
-### Uninstall a previous version
+### Uninstall a previously installed version
 The following command searches for a specific version of `XlsxCommand` module in the local machine. If found, then displays what would look like if you were to run the uninstallation of such specific version.
 ```
 Get-InstalledModule XlsxCommand -RequiredVersion 4.4.0 | Uninstall-Module -WhatIf
