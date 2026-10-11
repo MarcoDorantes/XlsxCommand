@@ -4,7 +4,7 @@
 
 - [XlsxCommand](#xlsxcommand)
     - [Summary](#summary)
-    - [The idea of a single table per worksheet tab](#the-idea-of-a-single-table-per-worksheet-tab)
+    - [The idea of a single ‘*table*’ per Worksheet tab](#the-idea-of-a-single-table-per-worksheet-tab)
     - [Directed acyclic graph dag of major external dependencies](#directed-acyclic-graph-dag-of-major-external-dependencies)
         - [Export-WorksheetXlsx cmdlet external dependencies](#export-worksheetxlsx-cmdlet-external-dependencies)
         - [Import-WorksheetXlsx cmdlet external dependencies](#import-worksheetxlsx-cmdlet-external-dependencies)
@@ -18,7 +18,7 @@
         - [Export-WorksheetXlsx syntax](#export-worksheetxlsx-syntax)
         - [Import-WorksheetXlsx syntax](#import-worksheetxlsx-syntax)
     - [Export-WorksheetXlsx usage examples](#export-worksheetxlsx-usage-examples)
-        - [1. Create an excel workbook xlsx of one worksheet tab with default cell formats](#1-create-an-excel-workbook-xlsx-of-one-worksheet-tab-with-default-cell-formats)
+        - [1. Create an Excel Workbook (XLSX) of one Worksheet tab with default cell formats](#1-create-an-excel-workbook-xlsx-of-one-worksheet-tab-with-default-cell-formats)
         - [2. Create an excel workbook xlsx of one worksheet tab with given cell formatting by column relative position](#2-create-an-excel-workbook-xlsx-of-one-worksheet-tab-with-given-cell-formatting-by-column-relative-position)
         - [3. Create an excel workbook xlsx of one worksheet tab with given cell formatting by property name](#3-create-an-excel-workbook-xlsx-of-one-worksheet-tab-with-given-cell-formatting-by-property-name)
         - [4. Create an excel workbook xlsx with multiple worksheet tabs by group](#4-create-an-excel-workbook-xlsx-with-multiple-worksheet-tabs-by-group)
