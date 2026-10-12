@@ -13,7 +13,7 @@
         - [Installation location and scope](#installation-location-and-scope)
         - [Installation process of the latest version for the first time](#installation-process-of-the-latest-version-for-the-first-time)
         - [Installation process to upgrade to the latest version](#installation-process-to-upgrade-to-the-latest-version)
-        - [Uninstall a previously installed version](#uninstall-a-previous-version)
+        - [Uninstall a previously installed version](#uninstall-a-previously-installed-version)
     - [Syntax of included cmdlets](#syntax-of-included-cmdlets)
         - [Export-WorksheetXlsx syntax](#export-worksheetxlsx-syntax)
         - [Import-WorksheetXlsx syntax](#import-worksheetxlsx-syntax)
