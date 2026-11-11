@@ -137,6 +137,9 @@ Export-WorksheetXlsx [-DestinationExcelXLSXFilePath] <string>
     [-DataTypeMap <OrderedHashtable>]
     [-AlignMap <OrderedHashtable>]
     [-SkipExcelValidator]
+    [-ChangeMissingNumberToStringType]
+    [-IgnoreNumberStoredAsTextValidation]
+    [-TryConvertToNumberFoundAsText]
     [<CommonParameters>]
 ```
 
