@@ -90,7 +90,7 @@ By '*external*' we mean a dependency whose design evolution is self-governing an
 ## Installation
 ### Installation prerequisites
 The `XlsxCommand` module has been tested (installation and included cmdlets) on the following runtime environment:
-1. [PowerShell 7.6.0](https://github.com/PowerShell/PowerShell/releases/tag/v7.6.0)
+1. [PowerShell 7.7.0](https://github.com/PowerShell/PowerShell/releases/tag/v7.7.0)
 2. [PowerShellGet 2.2.5](https://learn.microsoft.com/en-us/powershell/module/powershellget/?view=powershellget-2.x)
 
 The following PowerShell variable and command display data to see if the minimum required versions are already present:
